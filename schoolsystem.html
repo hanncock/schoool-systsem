@@ -1,0 +1,57 @@
+<!Doctype html>
+<html>
+<head>
+<link href="schoolsystem.css" type="text/css"  rel="stylesheet"/>
+ <title>
+     SCHOOL SYSTEM
+ </title>
+</head>
+<body >
+  <div id="menu">
+   <ul>
+   <H1>MENU</H1>
+     <li>STUDENT MANAGEMENT</li>
+	   <ul>Admit new student</ul>
+	   <ul>Deactivate Student</ul>
+	   <ul>Student List</ul><br>
+	 <li>EXAMINATION</li>
+	   <ul>Enter Exams</ul>
+	   <ul>Grading system</ul>
+	   <ul>Report</ul><br>
+	 <li>FINANCE/ACCOUNTS</li> 
+	   <ul>fee statement</ul>
+	   <ul>fee charges</ul>
+	   <ul>usability</ul>
+	   <ul>cash items</ul><br>
+	 <li>INVENTORY/STOCK</li>
+       <ul>add stock</ul>
+	   <ul>sell</ul>
+	   <ul>lend</ul>
+	   <ul>order</ul><br>
+     <li>LIBRARY</li>
+       <ul>borrow book</ul>
+	   <ul>return book</ul><br>  
+   </ul>
+   </div>
+  <div>
+<form id="register" action="schoolsystem.php" method="POST" >
+ <p class="reg" ><b><center>ADMIT NEW STUDENT</center></b></p>
+<h3><b><center>STUDENT DATA</center></b></h3>
+Names:<input type="text"  name="Student_Names">   Form:<input type="opton select" name="form">
+Stream:<input type="option select" name="stream">  <br><br>D.O.B:<input type="text" name="dd/mm/yy">
+Addmission No.<input type="text" name="Adms_No">  
+Contacts:<input type="text" name="Student_Contacts"> <img src="nbsp;">
+<br>
+Name: <input type="text" name="Parent1_Name"> Contacts:<input type="text" name="Parent1_Contacts">	
+National I.D<input type="text" name="Parent1_ID">	<br><br>
+Name: <input type="text" name="Parent2_Name"> Contacts:<input type="text" name="Parent2_Contacts">
+National I.D<input type="text" name="Parent2_ID">			
+<br><br><input type="submit" name="ADMIT">
+<?php echo"hello world" ?>
+</form>
+
+</div>
+</body>
+
+
+</html>
