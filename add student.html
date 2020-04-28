@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<style>
+			.dropdown-container {
+				display: none;
+				background-color: none;
+				color:white;
+			}
+			.active {
+				color: white;
+			}
+			.sidebar {
+				z-index: 1;
+			}
+			.dropdown-btn{
+				text-decoration: none;
+				color: #818181;
+				display: block;
+				border: none;
+				background: none;
+				width: 100%;
+				text-align: left;
+				cursor: pointer;
+				outline: none;
+			}
+			.list2{
+				font-size:16px;
+				text-align:center;
+			}
+</style>
+<title>ADD STUDENTS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="add student.css" type="text/css"  rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body onload=display_ct();>
+<div class="container" >
+			<div id="myheader" class="header">
+				<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+				<img src="img_avatar.png" class="logo">		
+				<span id="ct" class="date"></span>
+				<img src="img_avatar.png" alt="Avatar" class="img">
+			</div>
+			<div id="mymenu" class="menu">
+				<a href="javascript:void(0)" class="closebtn"  onclick="closeNav()">&times;</a>
+				<a href="dashboard.html" class="menus"><i class="fa fa-home"></i><span style="padding-left:10px;">Dashboard</span></a><br>
+				<a href="#" class="menus"><i class="fa fa-cog"></i><span style="padding-left:10px;">Settings</a><br>
+				<a href="add school.html" class="menus"><i class="fa fa-university"></i><span style="padding-left:10px;">School</a><br>
+				
+				<div class="sidebar">
+					<button class="dropdown-btn">
+						<a href="#" class="menus"><i class="fa fa-book"></i><span style="padding-left:10px;">Library</a>
+						<i class="fa fa-caret-down" style="padding-left:20px;"></i>
+					</button>
+					<div class="dropdown-container">
+						<ul class="list1">
+							<li class="list2"><a href="#" style="color:white;"><i class="fa fa-book"></i>Issue Book</a></li>
+							<li class="list2"><a href="#" style="color:white;"><i class="fa fa-book"></i>Register Books</a></li>
+							<li class="list2"><a href="#" style="color:white; padding-top:5px;"><i class="fa fa-book"></i>Books Category</a></li>
+						</ul>
+					</div>
+				</div>
+				
+				<a href="add student.html" class="menus"><i class="fa fa-user"></i><span style="padding-left:10px;">Student</a><br>
+				<a href="staff.html" class="menus"><i class="fa fa-users"></i><span style="padding-left:10px;">Staff</a><br>
+				<a href="#" class="menus"><i class="fa fa-leanpub"></i><span style="padding-left:10px;">Exams</a><br>
+				<a href="#" class="menus"><i class="fa fa-server"></i><span style="padding-left:10px;">Utilities</a><br>
+				<a href="#" class="menus"><i class="fa fa-users"></i><span style="padding-left:10px;">Inventory</a><br>
+				<a href="#" class="menus"><i class="fa fa-usd"></i><span style="padding-left:10px;">Finance</a><br>
+			</div>
+			<div id="mydisplay" class="display" >
+				
+					<div class="form-title">ADD/MODIFY STUDENT</div>	
+						<div class="stddetails">
+							<button class="tablinks" onclick="openCity(event, 'Student')">Student Information</button>					
+							<button class="tablinks" onclick="openCity(event, 'Parent')">Parent/Guardian Details</button>
+							<button class="tablinks" onclick="openCity(event, 'Home')">Home Details</button>
+							<button class="tablinks" onclick="openCity(event, 'Health')">Health Information</button>					
+							<button class="tablinks" onclick="openCity(event, 'School')">School Items</button>
+							<button class="tablinks" onclick="openCity(event, 'Documents')">Documents</button>
+						</div>
+				<div id="Student" class="tabcontent">	
+					<form method="POST"action="" class="addstudent" enctype="multipart/form-data">
+					<table >
+							<tr>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+							</tr>
+							<tr>
+								<td class="label">First Name:</td>
+								<td><input type="text" class="stdinputs"></td>
+								<td class="label">Second Name:</td>
+								<td><input type="text" class="stdinputs"></td>
+								<td class="label">Third Name:</td>
+								<td><input type="text" class="stdinputs"></td>
+								<td rowspan="3"><img src="img_avatar.png" class="stdimg"><br>
+								<input type="file" ></td>
+							</tr>
+							<tr>
+								<td class="label">D.O.B:</td>
+								<td><input type="text" class="stdinputs"></td>
+								<td class="label">Gender:</td>
+								<td><input type="text" class="stdinputs"></td>
+								<td class="label">Admission No:</td>
+								<td><input type="text" class="stdinputs"></td>
+							</tr>
+							<tr>
+								<td class="label">Class:</td>
+								<td><input type="text" class="stdinputs"></td>
+								<td class="label">Stream:</td>
+								<td><input type="text" class="stdinputs"></td>
+								<td class="label">Email/Phone:</td>
+								<td><input type="text" class="stdinputs"></td>
+							</tr>
+						</table>
+						<input type="submit" value="Submit" class="createschl">
+				</form>
+					</div>	
+					
+				<div >
+				<div id="Parent" class="tabcontent">
+					<form method="POST"action="" class="addstudent" enctype="multipart/form-data">
+					<table>
+						<tr>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+						</tr>
+						<tr>
+							<td class="label">Parent Name:</td>
+							<td><input type="text" class="stdinputs"></td>
+							<td class="label"> Phone No:</td>
+							<td><input type="text" class="stdinputs"></td>
+							<td class="label">ID NO:</td>
+							<td><input type="text" class="stdinputs"></td>
+							<td class="label">Email:</td>
+							<td><input type="text" class="stdinputs"></td>
+						</tr>
+						<tr>
+							<td class="label">Other Parent Name:</td>
+							<td><input type="text" class="stdinputs"></td>
+							<td class="label">Other Phone No:</td>
+							<td><input type="text" class="stdinputs"></td>
+							<td class="label">Other ID NO:</td>
+							<td><input type="text" class="stdinputs"></td>
+							<td class="label">Other Email:</td>
+							<td><input type="text" class="stdinputs"></td>
+						</tr>
+						<tr>
+							<td class="label">Guardian Name:</td>
+							<td><input type="text" class="stdinputs"></td>
+							<td class="label">Guardian Phone No:</td>
+							<td><input type="text" class="stdinputs"></td>
+							<td class="label">Guardian ID NO:</td>
+							<td><input type="text" class="stdinputs"></td>
+							<td class="label">Guardian Email:</td>
+							<td><input type="text" class="stdinputs"></td>
+						</tr>
+					</table>
+					<input type="submit" value="Submit" class="createschl">
+					</form>
+				</div>
+				<div id="Home" class="tabcontent">
+					<form method="POST"action="" class="addstudent" enctype="multipart/form-data">
+						<table>
+							<tr>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+							</tr>
+							<tr>
+								<td class="label">Home Address:</td>
+								<td><input type="text" class="stdinputs"></td>
+								<td class="label">Location:</td>
+								<td><input type="text" class="stdinputs"></td>
+								<td class="label">Home Description:</td>
+								<td><input type="text" class="stdinputs"></td>
+								<td class="label">Google Address:</td>
+								<td><input type="text" class="stdinputs"></td>
+							</tr>
+						</table>
+						<input type="submit" value="Submit" class="createschl">
+					</form>	
+				</div>
+				<div id="Health" class="tabcontent">
+					<form method="POST"action="" class="addstudent" enctype="multipart/form-data">
+						<table >
+							<tr>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+								
+							</tr>
+							<tr>
+								<td class="label">Health Provider:</td>
+								<td><input type="text" class="stdinputs"></td>
+								<td class="label">Contact:</td>
+								<td><input type="text" class="stdinputs"></td>
+								<td class="label">Contact Person:</td>
+								<td><input type="text" class="stdinputs"></td>
+							</tr>
+							<tr>
+								<td class="label">Allergies/Risk:</td>
+								<td><input type="text" class="stdinputs"></td>
+								<td class="label">Medical Condition:</td>
+								<td><input type="text" class="stdinputs"></td>
+								<td class="label">Extra Medical Info:</td>
+								<td><input type="text" class="stdinputs"></td>
+							</tr>
+						</table>
+						<input type="submit" value="Submit" class="createschl">
+					</form>	
+				</div>
+				<div id="School" class="tabcontent">
+					<form method="POST"action="" class="addstudent" enctype="multipart/form-data">
+						<table >
+							<tr>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+							</tr>
+							<tr>
+								<td class="label">Item:</td>
+								<td><input type="text" class="stdinputs"></td>
+								<td class="label">From:</td>
+								<td><input type="date" class="stdinputs"></td>
+								<td class="label">To:</td>
+								<td><input type="date" class="stdinputs"></td>
+								<td class="label">Condition Given:</td>
+								<td><input type="text" class="stdinputs"></td>
+							</tr>
+							<tr>
+								<b style="text-align:center;">Return Item</b>
+								<td class="label">Item:</td>
+								<td><input type="text" class="stdinputs"></td>
+								<td class="label">Date Returned</td>
+								<td><input type="date" class="stdinputs"></td>
+								<td class="label">Condition Returned</td>
+								<td><input type="text" class="stdinputs"></td>
+							</tr>
+						</table>
+						<input type="submit" value="Submit" class="createschl">
+					</form>	
+				</div>
+				<div id="Documents" class="tabcontent">
+					<form method="POST"action="" class="addstudent" enctype="multipart/form-data">
+						<table >
+							<tr>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+							</tr>
+							<tr>
+								<td class="label">Document Name:</td>
+								<td><input type="text" class="stdinputs"></td>
+								<td class="label">Description:</td>
+								<td><input type="text" class="stdinputs"></td>
+								<td class="label">Document/File:</td>
+								<td><input type="file"></td>
+							</tr>
+							
+						</table>
+						<input type="submit" value="Submit" class="createschl">
+					</form>	
+				</div>
+					student list go here
+				</div>
+			</div>
+</body>
+</html>
+
+<script>
+function openNav(){
+document.getElementById('mymenu').style.width = "160px";
+document.getElementById('mydisplay').style.marginLeft = "160px";
+}
+
+function closeNav(){
+document.getElementById('mymenu').style.width = "0px";
+document.getElementById('mydisplay').style.marginLeft = "0px";
+}
+
+function display_c(){
+var refresh=1000; // Refresh rate in milli seconds
+mytime=setTimeout('display_ct()',refresh)
+}
+
+function display_ct() {
+var x = new Date()
+var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getYear(); 
+x1 = x1 + " - " +  x.getHours( )+ ":" +  x.getMinutes() + ":" +  x.getSeconds();
+document.getElementById('ct').innerHTML = x1;
+display_c();
+ }
+ 
+function openCity(evt, cityName){
+	var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+  }
+  
+  
+  var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+</script>

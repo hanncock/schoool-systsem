@@ -1,0 +1,82 @@
+<html>
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="dashboard.css" type="text/css"  rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body onload='display_ct();'>
+		<div id="myheading" class="heading">
+		<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span> 
+		<img src="img_avatar.png" class="logo">
+		<form >	
+			<input type="text" placeholder="Search..." name="search" id="mysearch" class="ssearch">
+			<button type="submit" class="searching"><i class="fa fa-search"></i></button>
+		</form>
+		<span id='ct' class="date"></span>
+		<img src="img_avatar.png" alt="Avatar" class='img'>
+		</div>
+		<div id="mymenu" class="menu">
+				<a href="javascript:void(0)" class="closebtn"  onclick="closeNav()">&times;</a>
+				<a href="dashboard.html" class="menus"><i class="fa fa-home"></i><span style="padding-left:10px;">Dashboard</span></a><br>
+				<a href="#" class="menus"><i class="fa fa-cog"></i><span style="padding-left:10px;">Settings</a><br>
+				<a href="add school.html" class="menus"><i class="fa fa-university"></i><span style="padding-left:10px;">School</a><br>
+				<a href="#" class="menus"><i class="fa fa-book"></i><span style="padding-left:10px;">Library</a><br>
+				<a href="add student.html" class="menus"><i class="fa fa-user"></i><span style="padding-left:10px;">Student</a><br>
+				<a href="staff.html" class="menus"><i class="fa fa-users"></i><span style="padding-left:10px;">Staff</a><br>
+				<a href="#" class="menus"><i class="fa fa-leanpub"></i><span style="padding-left:10px;">Exams</a><br>
+				<a href="#" class="menus"><i class="fa fa-server"></i><span style="padding-left:10px;">Utilities</a><br>
+				<a href="#" class="menus"><i class="fa fa-users"></i><span style="padding-left:10px;">Inventory</a><br>
+				<a href="#" class="menus"><i class="fa fa-usd"></i><span style="padding-left:10px;">Finance</a><br>
+		</div>
+		<div id="mydisplay" class="display">
+			<div class="over">
+				<div id="myoverview" class="overview">
+					<span class="users" style="background-color:dodgerblue;"><i class="fa fa-users"></i>USERS</span>
+					<span class="users" style="background-color:green;"><i class="fa fa-university"></i>SCHOOLS</span>
+					<span class="users" style="background-color:brown;"><i class="fa fa-usd"></i>FINANCE</span>
+					<span class="users" style="background-color:black;"><i class="fa fa-users"></i>INVENTORY</span>
+				</div>
+			</div>
+			<div class="dispdata" id="mydispdata">
+				<span class="userss" style="background-color:grey;"><i class="fa fa-users"></i>Support Staff</span>
+				<span class="userss" style="background-color:grey;"><i class="fa fa-users"></i>Support Staff</span>
+				<span class="userss" style="background-color:grey;"><i class="fa fa-users"></i>Support Staff</span>
+				<span class="userss" style="background-color:grey;"><i class="fa fa-users"></i>Support Staff</span>
+				<span class="userss" style="background-color:grey;"><i class="fa fa-users"></i>Support Staff</span>
+				<span class="userss" style="background-color:grey;"><i class="fa fa-users"></i>Support Staff</span>
+				<span class="userss" style="background-color:grey;"><i class="fa fa-users"></i>Support Staff</span>
+				<span class="userss" style="background-color:grey;"><i class="fa fa-users"></i>Support Staff</span>
+				<span class="userss" style="background-color:grey;"><i class="fa fa-users"></i>Support Staff</span>
+			</div>
+		</div>
+		<footer id="myfooter" class="footer">
+			foooter items to be included later
+		</footer>
+	</body>
+</html>
+
+<script>
+function openNav(){
+document.getElementById('mymenu').style.width = "160px";
+document.getElementById('mydisplay').style.marginLeft = "161px";
+}
+
+function closeNav(){
+document.getElementById('mymenu').style.width = "0px";
+document.getElementById('mydisplay').style.marginLeft = "0px";
+}
+
+function display_c(){
+var refresh=1000; // Refresh rate in milli seconds
+mytime=setTimeout('display_ct()',refresh)
+}
+
+function display_ct() {
+var x = new Date()
+var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getYear(); 
+x1 = x1 + " - " +  x.getHours( )+ ":" +  x.getMinutes() + ":" +  x.getSeconds();
+document.getElementById('ct').innerHTML = x1;
+display_c();
+ }
+</script>

@@ -1,0 +1,182 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+.body{
+	margin:0;
+	padding:0;
+}
+
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: dodgerblue;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.1s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  }
+
+
+.container{
+	display:grid;
+	height:100%;
+	grid-template-areas:
+		'header header header header'
+		'display display display display'
+		'footer footer footer footer';
+	grid-gap: 1px;
+}
+.container > div{
+	margin:0;
+	padding: 0;
+	font-size: 30px;
+}
+.header{
+	grid-area: header; 
+	background-color:black;
+	height:80px;
+	color:white;
+}
+.logo{
+	margin-left: 60px;
+	padding-top: 8px;
+	position: relative;
+	width:50px;
+	height:auto;
+}
+.ssearch{
+	border-radius: 25px;
+	position:absolute;
+	overflow:hidden;
+	color:white;
+	top:45;
+	left:300;
+}
+.img{
+	padding:3px;
+	position: absolute;
+	top: 0;
+	right: 25px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	width: 50px;
+	height: 50px; 
+	border-radius: 50%;
+}
+.date{
+	position: absolute;
+	top: 20;
+	font-size:15px;
+	right: 25px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.menu{
+	grid-area: menu;
+	height:100%;
+	bacheight: 100%;
+	width: 0;
+	position: absolute;
+	top: 80px;
+	left: 0;	
+	background-color: #111;
+	overflow-x: hidden;
+	transition: 0.5s;
+	color:white;
+}
+.menus{
+	color:white;
+	font-size:18px;
+	
+}
+.closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 30px;
+  margin-left: 50px;
+  color:red;	
+}
+.display{
+	grid-area: display; 
+	top:0;
+}
+.form-title{
+	background-color:#111;
+	text-align:center;
+	color:white;
+	font-size:30px;
+	border-radius:10px;
+}
+.addstudent{
+	display:grid;
+	background-color: #f2f2f2;
+	top:0;
+	margin-right:5px;
+	font-size:15px;
+	border-radius:20px;
+}
+.stddetails{
+	border-radius:20px;
+	text-align:center;
+	font-size:20px;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	background-color: #f1f1f1;
+}
+.stdimg{
+	padding-left:20px;
+	width:200px;
+	height:150px;
+}
+.inputs{
+	margin:10px;
+	font-size:18px;
+}
+.labels{
+	font-size:12px;
+	border:1px solid;
+}
+.stdinputs{
+	width: 200px;
+	height: 30px;
+	border:1px solid;
+}
+.createschl {
+	background-color: #4CAF50;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-left:1200px;
+}
+.footer{ 
+	grid-area: footer;
+}
