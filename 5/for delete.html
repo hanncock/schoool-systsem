@@ -1,0 +1,103 @@
+<button class="tablinks" onclick="disp(event, 'Student')">Student Information</button>					
+<button class="tablinks" onclick="disp(event, 'Parent')">Parent/Guardian Details</button>
+
+<div id="Student" class="tabcontent">
+						<form method="POST" action="#" class="studentinfo" id="studentinfo">
+							<table class="table">
+								<tr>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+								</tr>
+								<tr>
+									<td class="labels">First Name:</td>
+									<td class="inputs"><input type="text" name="fname"></td>
+									<td class="labels">Second Name:</td>
+									<td class="inputs"><input type="text" name="sname"></td>
+									<td class="labels">Third Name:</td>
+									<td class="inputs"><input type="text" name="tname"></td>
+								</tr>
+								<tr>
+									<td class="labels">D.O.B :</td>
+									<td class="inputs"><input type="text" name="dob"></td>
+									<td class="labels">Gender:</td>
+									<td class="inputs"><input type="text" name="gender"></td>
+									<td class="labels">Admission No:</td>
+									<td class="inputs"><input type="text" name="adm_no"></td>
+								</tr>
+								<tr>
+									<td class="labels">Class</td>
+									<td class="inputs"><input type="text" name="class"></td>
+									<td class="labels">Stream:</td>
+									<td class="inputs"><input type="text" name="stream"></td>
+									<td class="labels">Email:</td>
+									<td class="inputs"><input type="map" name="email"></td>
+								</tr>
+								<tr>
+									<td class="labels">Phone</td>
+									<td><input type="text" name="phone"></td>
+								</tr>
+							</table>
+						</form>
+						<input type="submit" name="create" class="submit">
+					</div>
+<div id="Parent" class="tabcontent">
+						<form method="POST" action="#" id="parentinfo" class="parentinfo">
+							<table class="table">
+								<tr>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+								</tr>
+								<tr>
+									<td class="labels">Parent Names:</td>
+									<td class="inputs"><input type="text" name="parent1name"></td>
+									<td class="labels">Phone No:</td>
+									<td class="inputs"><input type="text" name="parent1phone"></td>
+									<td class="labels">Email</td>
+									<td class="inputs"><input type="text" name="parent1email"></td>
+								</tr>
+								<tr>
+									<td class="labels">Parent Names:</td>
+									<td class="inputs"><input type="text" name="parent2name"></td>
+									<td class="labels">Phone No:</td>
+									<td class="inputs"><input type="text" name="parent2phone"></td>
+									<td class="labels">Email:</td>
+									<td class="inputs"><input type="text" name="parent2email"></td>
+								</tr>
+								<tr>
+									<td class="labels">Guardian Names:</td>
+									<td class="inputs"><input type="text" name="guardianname"></td>
+									<td class="labels">Stream:</td>
+									<td class="inputs"><input type="text" name="guardianphone"></td>
+									<td class="labels">Email:</td>
+									<td class="inputs"><input type="map" name="guardianemail"></td>
+								</tr>
+							</table>
+						</form>
+						<input type="submit" name="create" class="submit">
+					</div>
+					
+					
+<script>
+function disp(evt, info){
+		var i,tabcontent,tablinks;
+		tabcontent = document.getElementsByClassName("tabcontent");
+		for(i=0; i<tabcontent.length; i++){
+			tabcontent[i].style.display ="none";
+		}
+		tablinks=document.getElementsByClassName('tablinks');
+		for(i=0; i<tablinks.length; i++){
+			tablinks[i].className = tablinks[i].className.replace("active", "");
+		}
+		document.getElementById(info).style.display= "block";
+		evt.currentTarget.classname += "active";
+	}
+	
+</script>

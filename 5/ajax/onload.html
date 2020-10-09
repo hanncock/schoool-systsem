@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lan="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewpoint" content="width-device-width ,initial scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Ajax</title>
+</head>
+<body>
+	<button id="data">Send</button>
+
+
+	<script>
+		document.getElementById('data').addEventListener('click',myFun);
+		function myFun(){
+			
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET','https:\\www.w3schools.com',true);
+			
+			xhr.onload = function(){
+				if(xhr.status==200){
+					document.write(this.resposnseText);
+				}
+			}
+			
+			xhr.send();
+			
+		}
+	</script>
+
+</body>

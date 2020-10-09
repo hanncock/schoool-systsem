@@ -1,0 +1,39 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+.body{
+	width:100%;
+}
+.container{
+	margin:0px;
+	display:flex;
+}
+.menu{
+	width:15rem;
+	height: 100%;
+	position: fixed;
+	z-index: 1;
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0, 0.9);
+	color:white;
+}
+.display{
+	margin-left:15rem;
+	background:grey;
+	width:100%;
+}
+.head{
+	grid-area: head;
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0, 0.9);
+	color:white;
+	height:3.5rem;
+}
+.disp{
+	grid-area:disp;
+	background:green;
+}
+.menu a{
+	font-size:2rem;
+}

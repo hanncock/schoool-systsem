@@ -1,0 +1,130 @@
+create database schlsys;
+
+use schlsys;
+
+create table student(
+	id int(6)primary key not null auto_increment,
+	admno int(6)not null unique,
+	fname varchar(10)not null,
+	sirname varchar(10)not null,
+	tname varchar(10)not null,
+	othername varchar(10)not null,
+	dob date,
+	gender varchar(10)not null,
+	class varchar(10)not null,
+	stream varchar(10)not null,
+	email varchar(30)not null,
+	phone int(15)not null,
+	county varchar(10)not null,
+	created_on datetime default current_timestamp,
+	user varchar(10)not null
+);
+
+create table school(
+	id int(6)primary key not null auto_increment,
+	schlname int(30)not null,
+	schladdress varchar(20)not null,
+	schlvat varchar(10)not null,
+	schlhealth varchar(10)not null,
+	schllocation varchar(10)not null,
+	schlpin varchar(6)not null,
+	schlphone int(15)not null,
+	logo varchar(20)not null,
+	website varchar(30)not null,
+	email varchar(30)not null,
+	created_on datetime default current_timestamp,
+	user varchar(10)not null
+);
+
+create table studentfees(
+	id int(6)primary key not null auto_increment,
+	admno int(6)not null,
+	name varchar(30)not null,
+	package varchar(20)not null,
+	price int(10)not null,
+	created_on datetime default current_timestamp,
+	user varchar(10)not null
+);
+
+create table class(
+	id int(6)primary key not null auto_increment,
+	clscode int(6)not null,
+	clsname varchar(15)not null,
+	teacher varchar(10)not null,
+	numstudents int(10)not null,
+	streams varchar(10)not null,
+	created_on datetime default current_timestamp,
+	user varchar(10)not null
+);
+
+create table exam(
+	id int(6)primary key not null auto_increment,
+	examcode int(6)not null,
+	examname varchar(30)not null,
+	created_on datetime default current_timestamp,
+	user varchar(10)not null
+);
+
+create table fees(
+	id int(6)primary key not null auto_increment,
+	package varchar(30)not null,
+	amnt int(30)not null,
+	class varchar(10)not null,
+	created_on datetime default current_timestamp,
+	user varchar(10)not null
+);
+
+create table payment(
+	id int(6)primary key not null auto_increment,
+	name varchar(30)not null,
+	admno int(6)not null,
+	mop varchar(20)not null,
+	refno varchar(20)not null unique,
+	amount int(20)not null,
+	created_on datetime default current_timestamp,
+	user varchar(10)not null
+);
+
+create table staff(
+	id int(6)primary key not null auto_increment,
+	names varchar(30)not null,
+	idno int(15)not null,
+	gender varchar(10)not null,
+	marital varchar(10)not null,
+	residence varchar(10)not null,
+	phone int(15)not null,
+	email varchar(30)not null,
+	dob date,
+	created_on datetime default current_timestamp,
+	user varchar(10)not null,
+	path varchar(20)not null
+);
+
+create table stream(
+	id int(6)primary key not null auto_increment,
+	strmcode varchar(6)not null unique,
+	strmname varchar(20)not null,
+	teacher varchar(15)not null,
+	numstudents varchar(6)not null,
+	created_on datetime default current_timestamp,
+	user varchar(10)not null
+);
+
+create table credentials(
+	id int(6)primary key not null auto_increment,
+	username varchar(20)not null,
+	password varchar(20)not null,
+	type int(2)not null,
+	status varchar(10)not null,
+	created_on datetime default current_timestamp,
+	user varchar(10)not null
+);
+create table message(
+	id int(6)primary key not null auto_increment,
+	receiver varchar(20)not null,
+	sender varchar(20)not null,
+	message varchar(100)not null,
+	status varchar(10)not null,
+	created_on datetime default current_timestamp,
+	user varchar(10)not null
+);

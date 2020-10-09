@@ -1,0 +1,97 @@
+<html>
+	<head>
+	<style>
+	.dropdown-content{
+	display:none;}
+	.dropdown-container{
+	display:none;}
+	.active {
+  background-color: green;
+  color: white;
+}
+	</style>
+	</head>
+	<body>
+	
+	 <button class="dropdown-btn">Dropdown 
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div>
+  
+  <div class="dropdown">
+	<button class="dropdown-btn">
+		<label class="dropdown-btn" id="labels">School Setup2</label>
+		<i class="fa fa-caret-down"></i>
+	</button>
+	<div class="dropdown-container">
+		<button class="tablinks" onclick="openCity(event, 'Paris')"> 
+			<label class="labels2">Create School</label>
+		</button><br>
+		<button class="tablinks" onclick="openCity(event, 'Paris')"> 
+			<label class="labels2">Edit School</label>
+		</button><br>
+	</div>
+  </div>
+	
+					<div class="dropdown">
+						<button class="dropdown-btn">
+							<i class="fa fa-university" id="icons"></i>
+							<label class="label" id="labels">School Setup3</label>
+							<i class="fa fa-caret-down"></i>
+						</button><br>
+						<div class="dropdown-content" >
+							<button class="tablinks" onclick="openCity(event, 'Paris')">
+								 
+								<label class="labels2">Create School1</label>
+							</button><br>
+							<button class="tablinks" onclick="openCity(event, 'Paris')">
+								 
+								<label class="labels2">Edit School2</label>
+							</button><br>
+						</div>
+					</div>
+					
+					
+		<script> 
+
+
+var dropdown = document.getElementsByClassName("tablinks");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+
+
+
+
+
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,171 @@
+*{
+	box-sizing: border-box;
+	margin:0;
+	font-family: 'Poppins';
+}
+.container{
+	display:grid;
+	background:lightgrey;
+	grid-wrap:wrap;
+}
+.header{
+	height:3rem;
+	display:flex;
+	background:white;
+}
+.logo{
+	width:3rem;
+}
+.search{
+	margin:0.5rem 0rem 0rem 40rem;
+	padding-left:2rem;
+}
+.srchtxt{
+	width:20rem;
+	height:2.5rem;
+	font-family:cursive;
+	border-radius:2px transparent;
+}
+.srchbtn{
+	height:2.5rem;
+	text-align:center;
+	width:2.5rem;
+	color:black;
+	border:none;
+}
+.icons{
+	margin:1.5rem 0rem 0rem 0rem;
+	font-size:1.5rem;
+	padding-left:2rem;
+}
+.user{
+	float:right;
+}
+.userimg{
+	margin:0.2rem 0rem 0rem 6.5rem;
+	width:2.5rem;
+	height:2.5rem;
+	border-radius:50%;
+}
+.display{
+	display:flex;
+	
+}
+.menu{
+	width:18%;
+	background:#23263C;
+	color:white;
+	font-size:1rem;
+}
+.userrole{
+	text-align:center;
+	font-family:cursive;
+}
+.menubtn{
+	border:none;
+	width:100%;
+	height:auto;
+	font-size:1rem;
+	min-height:2rem;
+	text-align:left;
+	padding-left:1rem;
+}
+.menubtn:hover{
+	background:dodgerblue;
+}
+a{
+	text-decoration:none;
+}
+.submenu {
+	display:none;
+}
+
+.menubtn:hover .submenu{
+	display:block;
+	height:auto;
+	min-height:2rem;
+	text-align:right;
+}
+.disp{
+	margin-left:4px;
+	width:90%;
+	background:lightgrey;
+}
+.boxes{
+	width:99%;
+	border-radius:5px;
+	margin-top:2px ;
+	background:lightgrey;
+	padding-left:1rem;
+	display:grid;
+	grid-wrap:wrap;
+	grid-gap:1rem;
+}
+.boxs{
+	display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+h2{text-align:center;background:#23263C;color:white;border-radius:0.5rem;}
+.box{
+	background:white;	
+	margin:5px ;
+	border:2px solid lightgrey;
+	border-radius:0.5rem;
+	min-height:100px;
+	
+}
+.other{
+	margin-top:2rem;
+	margin-left:2rem;
+	height:200px;
+	width:95%;
+}
+.labels{
+	font-size:14px;
+}
+.inputs{
+	font-size:2rem;
+}
+.addschl{
+	width:98%;
+	margin:5px 5px 5px 5px;
+	border-right:5px solid white;
+	border-bottom:5px solid white;
+	box-shadow:5px 5px 5px white;
+}
+.schls{
+	font-size:13.5px;
+}
+.edit{
+	width:80%;
+	overflow-y:scroll;
+	height:80%;
+	top:50px;
+	z-index:1;
+	background:rgb(0,0,0,0.8);
+	position:absolute;
+	color:white;
+}
+.login{
+	position:relative;
+	float:center;
+	width:95%;
+	background:lightgrey;
+}
+.close{
+	background:red;
+	height:2.5rem;
+	border-radius:10px;
+	box-shadow:2px 5px 5px #23263C;
+	color:white;
+	font-size:1rem;
+}
+.save{
+	background:green;
+	height:2.5rem;
+	border-radius:10px;
+	box-shadow:2px 5px 5px #23263C;
+	color:white;
+	font-size:1rem;
+}

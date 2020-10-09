@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="demo">
+
+<h1>The XMLHttpRequest Object</h1>
+<button type="button" onclick="loadDoc()">Change Content</button>
+</div>
+<div id="output"></div>
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("output").outerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "ajax_info.txt", true);
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>
+
+
+
+<!--html>
+	<head></head>
+	<body>
+		<button id="button" onclick="loadText()">Get the file</button>
+	</body>
+	<script>
+		//document.getElementById('button').addEventListener('click'.loadText);
+		
+		function loadText(){
+		
+			var xhr = new XMLHttpRequest();
+			
+			xhr.open('GET','trial.txt',true);
+			
+			console.log('READYSTATE: ', xhr.readyState);
+			
+			xhr.onload = function(){
+			console.log('READYSTATE: ', xhr.readyState);
+				if(this.status == 200){
+					console.log(this.responseText);
+				}
+			}
+			xhr.send();
+		}
+	</script>
+</html-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--html>
+	<head>
+	<style>
+	.abc{
+		font-size:3rem;
+		
+	}
+		</style>
+	</head>
+	<body>
+		<div class="dispdata">
+			data to display
+			<button onclick="disp()">1235</button>
+			<span id="demo" class="demo"></span>
+		</div>
+		
+		<div  class="trial">
+			<i>1234dsfdfg</i>
+			<i>1234dsfdfg</i>
+		</div>
+	</body>
+</html>
+
+<script>
+function disp(){
+var results = document.getElementById('demo');
+results.innerHTML = function dis(){
+		var i,tabcontent;
+		tabcontent = document.getElementsByClassName('trial');
+		for(i=0; i<tabcontent.length; i++){
+			tabcontent[i].style.display ="block";
+		}
+	}
+	results.outerHTML =( 'welcome' 
+	'<li class="abc"> 1234 </li>');
+}
+</script-->

@@ -1,0 +1,97 @@
+/*CSS VARIABLES*/
+:root{
+	--primary: #ddd;
+	--dark: #333;
+	--light: #fff;
+	---shadow: 0 1px 5px rgba(104, 104, 104, 0.8)
+}
+html{
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/**/
+.main-nav ul{
+	display: grid;
+	grid-gap: 20px;
+	padding: 0;
+	line-style: none;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.main-nav a{
+	background: var(--dark);
+	display: block;
+	text-decoration: none;
+	padding: 0.8rem;
+	text-align: center;
+	color: var(--light);
+	text-transform: uppercase;
+	font-size: 1.1rem;
+	box-shadow: var(--shadow);
+}
+/**/
+
+body{
+	margin: 0px;
+	
+}
+.wrapper{
+	display:grid;
+	grid-gap:5px;
+	grid-template-areas:'men disp disp disp disp disp disp disp disp disp disp disp disp disp disp disp disp disp disp disp';
+}
+
+.men{
+	grid-area:men;
+}
+.dis{
+	grid-area:disp;
+}
+
+.displayer{
+	display: grid;
+	grid-template-areas:'head head head'
+						'dispdata dispdata dispdata';
+}
+
+.head{
+	grid-area:head;
+}
+
+.dispdata{
+	grid-area:dispdata;
+}
+.header{
+	width:100%;
+	color: black;
+	border-bottom:1px solid grey;
+}
+.smlicons{
+	text-transform:uppercase;
+	text-align:center;
+	color:black;
+	font-size:12px;
+	padding-left:20px;
+}
+.menus{
+	background:blue;
+	display:block;
+	font-size:16px;
+	padding-left:12px;
+}
+.aname{
+	display: block;
+	text-decoration: none;
+	padding: 0.8rem;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 1.1rem;
+}
+.menu2{
+	display:block;
+}
+
+.display{
+	padding-top:0px;
+}
