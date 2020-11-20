@@ -56,7 +56,10 @@
 								<td class="inputs">
 									<select name="mop">
 										<option value="">--Select Payment--</option>
-										<option value="cash">Cash</option>
+										<option value="CASH">Cash</option>
+										<option value="M-PESA">M-Pesa</option>
+										<option value="BANK RECEIPT">Bank Receipt</option>
+										<option value="WAI1VER">waiver</option>
 									</select>
 								</td>	
 								<td class="label">Ref No:</td>

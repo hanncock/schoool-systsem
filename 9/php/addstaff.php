@@ -121,6 +121,7 @@
 						<table>
 							<tr style="background:green;color:white;box-shadow:2px 4px 5px green;text-align:center;" >
 									<td>#</td>
+									<td>Photo</td>
 									<td>Names</td>
 									<td>ID_No</td>
 									<td>Gender</td>
@@ -130,7 +131,7 @@
 									<td>Phone</td>
 									<td>dob</td>
 									<td>created by</td>
-									<td>Photo</td>
+								
 									<td></td>
 							</tr>
 								<?php include '../logic/staff.php' ?>

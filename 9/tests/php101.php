@@ -81,7 +81,8 @@ readfile("../db/db tables.txt")."<br>";
 
 <div id="demo">
 <h1>The XMLHttpRequest Object</h1>
-<button type="button" onclick="()">Change Content</button>
+<button type="button" onkeyup="loadDoc()">Change Content</button>
+<button type="button" onclick="loadDoc1()">Change Content</button>
 <div id="disp" style="display:"></div>
 <div id="pip"></div>
 </div>
@@ -95,15 +96,15 @@ function loadDoc() {
       this.responseText;
     }
   };
-  xhttp.open("GET", "api101.php", true);
+  xhttp.open("GET", "api101.php?fname=" + soke, true);
   xhttp.send();
 }
 
-var out = new XMLHttpRequest();
+/*var out = new XMLHttpRequest();
 out.open("GET", "api101.php", true);
 out.send();
 var soke = JSON.stringify(document.getElementById('disp').innerHTML=loadDoc());
-document.getElementById('pip').innerHTML='welcome',soke[1][1];
+document.getElementById('pip').innerHTML='welcome',soke[1][1];*/
 </script>
 
 </body>

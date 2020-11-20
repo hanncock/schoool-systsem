@@ -18,7 +18,7 @@
 								<i class="fa fa-users" style="font-size:5rem;color:brown;padding-left:4rem;opacity:0.5;"></i>
 								
 							</div>
-							<div class="box" style="box-shadow: 2px 10px 10px  white;" >
+							<div class="box" style="box-shadow: 2px 10px 10px  grey;" >
 								<h2>Errors</h2>
 								<span style="font-size:2.5rem;color:grey;">500</span>
 								<i class="fa fa-bug" style="font-size:5rem;color:brown;padding-left:4rem;opacity:0.5;"></i>

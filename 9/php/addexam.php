@@ -28,18 +28,22 @@
 			<section class="display">
 				<?php include 'menu.php'?>
 				<section class="disp">
-					<h2>Register Exams</h2>
 					<form method="POST" action="">
+							<h2>Register Exams</h2>
 						<table>
 							<tr>
 								<td class="label">Exam Name</td>
 								<td class="inputs"><input type="text" name="examname"></td>
 								<td class="label">Code:</td>
 								<td class="inputs"><input type="text" name="examcode"></td>
-								<td><input type="submit" name="savexam" value="Create Exam" style="background:green;height:2.5rem;border-radius:10px;box-shadow:2px 5px 5px #23263C;color:white;font-size:1rem;"></td>
+								<td><input type="submit" name="CreateExam" value="Create Exam" style="background:green;height:2.5rem;border-radius:10px;box-shadow:2px 5px 5px #23263C;color:white;font-size:1rem;"></td>
 							</tr>
+						</table>	
 					</form>
-					<?php include('../logic/exam.php');?>
+					<section class="schls">
+						<h2>Exam List</h2>
+						<?php include '../logic/exam.php' ?>
+					</section>
 				</section>
 			</section>
 		</section>

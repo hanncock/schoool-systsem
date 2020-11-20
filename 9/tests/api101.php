@@ -110,7 +110,7 @@ $check=mysqli_fetch_array($result);
          echo json_encode(['Attendance'=>$Results]); 
     }
 ?-->
-<?php
+<!--?php
 include('../logic/connector.php');
 /*if(isset($_GET['admission_no']) && isset($_GET['exam_name'])){
         $admission_no=$_GET['admission_no'];
@@ -136,4 +136,22 @@ $ro =  json_encode($rows);
 $daat =  json_decode($ro,true);
 print $daat[0]["id"];
 print $ro;
+?-->
+<html>
+	<head></head>
+	<body>
+		<h2 style="background:green">this is the new bla bla</h2>
+	</body>
+</html>
+<?php
+	require('../logic/connector.php');
+	$fname = $_GET['fname'];
+	$sql = "select * from student where fname='$fname'";
+	$res = $conn->query($sql);
+	if($res->num_rows>0){
+		while($row=$res->fetch_assoc()){
+			echo $row['id'];
+			echo $row['fname'];
+		}
+	}
 ?>

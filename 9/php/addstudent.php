@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/index.css">
 		<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-		  <!--script type="text/javascript">
+		  <script type="text/javascript">
   function validateForm ()
   {
     if(document.student.fname.value=="")
@@ -66,8 +66,8 @@
 	
 	
     return true;
- 
-    </script-->
+  }
+    </script>
 	</head>
 	<body>
 		<section class="container">
@@ -162,41 +162,30 @@
 							</center>
 					</form>
 					<section class="schls">
-						<h2>Student List</h2>
-						<table>
-							<tr style="background:green;color:white;box-shadow:2px 4px 5px green;text-align:center;" >
-									<td>#</td>
-									<td>Admission No</td>
-									<td>Names of Student</td>
-									<td>Date Of Birth</td>
-									<td>Gender</td>
-									<td>Admission No</td>
-									<td>Class</td>
-									<td>Stream</td>
-									<td>Email</td>
-									<td>Phone Number</td>
-									<td>County</td>
-									<td></td>
-							</tr>
-								<?php include '../logic/student.php' ?>
-						</table>
 						
+								<?php include '../logic/student.php' ?>
 					</section>
-					
+					<?php
+						if(isset($_GET['popup'])){
+							?>
+							<section class="popup" name="popup" id="popup">
+								<section class="meso">
+									<center>
+										<img src='../images/sucsess.jpg' style="width:100px;height:100px;"><br><br>
+										Student Has Been Added Succesffully<br><br><br>
+										<a href="addstudent.php">
+										<button onload="close()" style="background:dodgerblue;border-radius:10px;width:90px;text-align:center;height:40px;border:none;color:white;">OK</button>
+										</a>
+									</center>
+								</section>
+								<div id='hey'>
+								</div>
+							</section>
+							<?php
+						}
+					?>
 				</section>
 			</section>
 		</section>
-		<script defer src="../js/jquery.js"></script>
-		<script>
-			window.onload = function() {
-				
-				$.ajax({
-					url: "/SchoolSystem/9/tests/apiconsum.php",
-					context: document.body
-				}).done(function(data) {
-					console.log(data);
-				});
-			}
-		</script>
 	</body>
 </html>

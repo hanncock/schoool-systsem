@@ -16,13 +16,14 @@ create table student(
 	email varchar(30)not null,
 	phone int(15)not null,
 	county varchar(10)not null,
-	created_on datetime default current_timestamp,
+	created_on datetime DEFAULT current_timestamp,
+	status varchar(10) DEFAULT 'Active',
 	user varchar(10)not null
 );
 
 create table school(
 	id int(6)primary key not null auto_increment,
-	schlname int(30)not null,
+	schlname varchar(50)not null,
 	schladdress varchar(20)not null,
 	schlvat varchar(10)not null,
 	schlhealth varchar(10)not null,
@@ -59,7 +60,7 @@ create table class(
 
 create table exam(
 	id int(6)primary key not null auto_increment,
-	examcode int(6)not null,
+	examcode varchar(6)not null,
 	examname varchar(30)not null,
 	created_on datetime default current_timestamp,
 	user varchar(10)not null
@@ -97,7 +98,7 @@ create table staff(
 	dob date,
 	created_on datetime default current_timestamp,
 	user varchar(10)not null,
-	path varchar(20)not null
+	path varchar(50)not null
 );
 
 create table stream(
@@ -128,3 +129,26 @@ create table message(
 	created_on datetime default current_timestamp,
 	user varchar(10)not null
 );
+create table results(
+	id int(6)primary key not null auto_increment,
+	examname varchar(30)not null,
+	class varchar(30)not null,
+	stream varchar(20)not null,
+	names varchar(30)not null,
+	admno int(15)not null,
+	math int(3)not null,
+	eng int(3)not null,
+	kisw int(3)not null,
+	chem int(3)not null,
+	phy int(3)not null,
+	bio int(3)not null,
+	created_on datetime default current_timestamp,
+	user varchar(10)not null,
+	year int(4)not null
+);
+
+
+complex queries(
+	SELECT names,math,eng,kisw,chem,phy,bio, SUM(math+eng+kisw+chem+phy+bio) as marks FROM results WHERE examname='examn1'AND class='Form 2' GROUP BY names ORDER BY marks DESC;
+)
+

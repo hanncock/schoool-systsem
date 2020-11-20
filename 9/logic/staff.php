@@ -45,6 +45,8 @@ $result=$conn->query($sql1);
     while($row = $result->fetch_assoc()) {
 	 echo "<tr>";
 			echo "<td>" . $row['id'] . "</td>";
+			$pic = $row['path'];
+			echo "<td><img src='$pic' style='width:80px;height:80px;border-radius:50px;'></td>";
 			echo "<td>" . $row['names'] . "</td>";	 
 			echo "<td>" . $row['idno'] . "</td>";
 			echo "<td>" . $row['gender'] . "</td>";
@@ -53,9 +55,8 @@ $result=$conn->query($sql1);
 			echo "<td>" . $row['email'] . "</td>";
 			echo "<td>" . $row['phone'] . "</td>";
 			echo "<td>" . $row['dob'] . "</td>";
-			echo "<td>" . $row['created_by'] . "</td>";
-			$pic = $row['path'];
-			echo "<td><img src='$pic' style='width:100px;height:100px;'></td>";
+		//	echo "<td>" . $row['created_by'] . "</td>";
+			
 			?>
 			<td>
 				<button style="background:green;"><a href="addstaff.php?edit=<?php echo $row['id'] ?>" >

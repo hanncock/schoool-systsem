@@ -28,6 +28,7 @@
 			<section class="display">
 				<?php include 'menu.php'?>
 				<section class="disp">
+					<h2>Charge Student Fees</h2>
 					<form method="POST" action="studentfees.php">
 						<table>
 							<tr>
@@ -39,11 +40,11 @@
 										<option value="">-select Class-</option>
 											<?php
 												require_once('../logic/connector.php');
-												$sql = "select * from stream";
+												$sql = "select * from class";
 												$result=$conn->query($sql);
 												if ($result->num_rows > 0) {
 													while($row = $result->fetch_assoc()) {
-														echo "<option value='".$row['class']."'>".$row['strmname']."</option>";
+														echo "<option value='".$row['clsname']."'>".$row['clsname']."</option>";
 													}
 												}	
 											?>
@@ -65,11 +66,10 @@
 											?>
 									</select>
 								</td>
+									<td><input type="submit" name="search" value="Search" style="background:green;height:2.5rem;border-radius:10px;box-shadow:2px 5px 5px #23263C;color:white;font-size:1rem;"></td>
 							</tr>
+							
 						</table>
-						<center>
-								<input type="submit" name="search" value="Search" style="background:green;height:2.5rem;border-radius:10px;box-shadow:2px 5px 5px #23263C;color:white;font-size:1rem;">
-						</center>
 					</form>
 					<section class="schls">
 						
@@ -90,7 +90,7 @@
 							require_once('../logic/connector.php');
 							if(isset($_POST['search'])){
 								$admno = $_POST['admno'];
-								$sql = "SELECT fname,sirname,tname,othername,admno,class,stream FROM student where  admno=$admno";
+								$sql = "SELECT fname,sirname,tname,othername,admno,class,stream FROM student where  admno LIKE '%$admno%' ";
 								$result=$conn->query($sql);
 								if ($result->num_rows > 0) {	
 									// output data of each row

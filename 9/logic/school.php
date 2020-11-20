@@ -72,9 +72,7 @@ $result=$conn->query($sql1);
 		$result = $conn->query($sql2);
 		header("Location:../php/addschool.php");
 	}
-		?>
 	
-		<?php
 	if(isset($_GET['edit'])){
 		
 		$id = $_GET['edit'];
@@ -105,10 +103,11 @@ $result=$conn->query($sql1);
 		$schlphone = $row['schlphone'];
 		 ?>
 		 <section class="edit">
+		 <section class="editinfo">
 			<form method="POST" action="../logic/school.php"class="addschl">
 						<h2>Edit School</h2>
 						<table>
-							<tr>
+							<tr style="height:100px;">
 								<td class="label">School Name</td>
 								<td class="inputs"><input type="text" name="schlname" value="<?php echo $shclname; ?>"></td>
 								<td class="label">School Location</td>
@@ -116,7 +115,7 @@ $result=$conn->query($sql1);
 								<td class="label">School Email</td>
 								<td class="inputs"><input type="text" name="schlemail" value="<?php echo $schlemail; ?>"></td>
 							</tr>
-							<tr>
+							<tr style="height:100px;">
 								<td class="label">School V.A.T</td>
 								<td class="inputs"><input type="text" name="schlvat" value="<?php echo $schlvat; ?>"></td>
 								<td class="label">School HealthNo.</td>
@@ -125,7 +124,7 @@ $result=$conn->query($sql1);
 								<td class="inputs"><input type="text" name="schllocation" value="<?php echo $schllocation; ?>"></td>	
 								
 							</tr>
-							<tr>	
+							<tr style="height:100px;">	
 								<td class="label">School Pin</td>
 								<td class="inputs"><input type="text" name="schlpin" value="<?php echo $schlpin; ?>"></td>
 								<td class="label">School Phone</td>
@@ -135,12 +134,13 @@ $result=$conn->query($sql1);
 					
 							</tr>
 							
-						</table>
+						</table><br><br><br>
 						<center>
 							<button  class="save" type="submit" name="save" value="<?php echo $row['id']; ?>">Save</button>
-							<button class="close"><a href="addschool.php" >Cancel</a></button>								
+							<button class="close"><a href="../php/addschool.php" >Cancel</a></button>								
 						</center>
 					</form>
+			</section>		
 		</section>
 		 <?php
 	}
