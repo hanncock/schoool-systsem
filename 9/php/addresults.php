@@ -102,23 +102,32 @@
 								?>
 								<form action="../logic/results.php" class="addschl" name="school" onsubmit="return validateForm()" method="POST">
 									<h2>Enter Exam Results</h2>	
-									<table>
+									<table style="width:100%;">
 										<tr style="background:green;color:white;box-shadow:2px 4px 5px green;text-align:center;" >
-											<td></td>
+											<td>Student Names</td>
 											<td>Class</td>
 											<td>Stream</td>
 											<td>Admn</td>
-											<td>Student Names</td>
+											<td>exam</td>
 											<td>Math</td>
-											<td>English</td>
-											<td>Kiswahili</td>
-											<td>Chemistry</td>
-											<td>Physics</td>
-											<td>Biology</td>
+											<td>Eng</td>
+											<td>Kisw</td>
+											<td>Chem</td>
+											<td>Phys</td>
+											<td>Bio</td>
+											<td>Histo</td>
+											<td>C.R.E</td>
+											<td>Comp</td>
+											<td>Music</td>
+											<td>Bizna</td>
+											<td>Agric</td>
+											<td>French</td>
+											<td>Year</td>
 										</tr>
 									<?php
 									while ($row=$res->fetch_assoc()){
-										echo "<tr>";
+										//echo "123";
+										echo "<tr style='height:2rem;'>";
 										//echo "<td>".$row['class']."</td>";
 										$class=$row['class'];
 										//echo "<td>".$row['admno']."</td>";
@@ -130,18 +139,25 @@
 									//	echo "<td>".$name."</td>";
 										
 										?>
-										<td class="labels"><input type="hidden" name="<?php echo "examname[]"; ?>" value="<?php echo $examname; ?>"><?php echo $examname; ?></td>
-										<td class="labels"><input type="hidden" name="<?php echo "class[]"; ?>" value="<?php echo $class; ?>"><?php echo $class; ?></td>
-										<td class="labels"><input type="hidden" name="<?php echo "stream[]"; ?>" value="<?php echo $stream; ?>"><?php echo $stream; ?></td>
-										<td class="labels"><input type="hidden" name="<?php echo "admno[]"; ?>" value="<?php echo $admno; ?>"><?php echo $admno; ?></td>
-										<td class="labels"><input type="hidden" name="<?php echo "names[]"; ?>" value="<?php echo $name; ?>"><?php echo $name; ?></td>
-										<td class="inputs" ><input style="width:60px;"  type="text" name="<?php echo "math[]"; ?>" ></td>
-										<td class="inputs" ><input style="width:60px;"  type="text" name="<?php echo "eng[]"; ?>" ></td>
-										<td class="inputs" ><input style="width:60px;"  type="text" name="<?php echo "kisw[]"; ?>" ></td>
-										<td class="inputs" ><input style="width:80px;"  type="text" name="<?php echo "chem[]"; ?>" ></td>
-										<td class="inputs" ><input style="width:60px;"  type="text" name="<?php echo "phy[]"; ?>" ></td>
-										<td class="inputs" ><input style="width:60px;"  type="text" name="<?php echo "bio[]"; ?>" ></td>
-										<td class="labels"><input type="hidden" name="<?php echo "year[]"; ?>" value="<?php echo $year; ?>"><?php echo $year; ?></td>
+										<td class="labels" style=' border-bottom: 1px solid white;'><input type="hidden" name="<?php echo "names[]"; ?>" value="<?php echo $name; ?>"><?php echo $name; ?></td>
+										<td class="labels" style=' border-bottom: 1px solid white;'><input type="hidden" name="<?php echo "class[]"; ?>" value="<?php echo $class; ?>"><?php echo $class; ?></td>
+										<td class="labels" style=' border-bottom: 1px solid white;'><input type="hidden" name="<?php echo "stream[]"; ?>" value="<?php echo $stream; ?>"><?php echo $stream; ?></td>
+										<td class="labels" style=' border-bottom: 1px solid white;'><input type="hidden" name="<?php echo "admno[]"; ?>" value="<?php echo $admno; ?>"><?php echo $admno; ?></td>
+										<td class="labels" style=' border-bottom: 1px solid white;'><input type="hidden" name="<?php echo "examname[]"; ?>" value="<?php echo $examname; ?>"><?php echo $examname; ?></td>
+										<td class="inputs" style=' border-bottom: 1px solid white;'><input style="width:40px;"  type="number" name="<?php echo "math[]"; ?>" ></td>
+										<td class="inputs" style=' border-bottom: 1px solid white;'><input style="width:40px;"  type="number" name="<?php echo "eng[]"; ?>" ></td>
+										<td class="inputs" style=' border-bottom: 1px solid white;'><input style="width:40px;"  type="number" name="<?php echo "kisw[]"; ?>" ></td>
+										<td class="inputs" style=' border-bottom: 1px solid white;'><input style="width:50px;"  type="number" name="<?php echo "chem[]"; ?>" ></td>
+										<td class="inputs" style=' border-bottom: 1px solid white;'><input style="width:40px;"  type="number" name="<?php echo "phy[]"; ?>" ></td>
+										<td class="inputs" style=' border-bottom: 1px solid white;'><input style="width:40px;"  type="number" name="<?php echo "bio[]"; ?>" ></td>
+										<td class="inputs" style=' border-bottom: 1px solid white;'><input style="width:40px;"  type="number" name="<?php echo "histo[]"; ?>" ></td>
+										<td class="inputs" style=' border-bottom: 1px solid white;'><input style="width:40px;"  type="number" name="<?php echo "cre[]"; ?>" ></td>
+										<td class="inputs" style=' border-bottom: 1px solid white;'><input style="width:40px;"  type="number" name="<?php echo "comp[]"; ?>" ></td>
+										<td class="inputs" style=' border-bottom: 1px solid white;'><input style="width:40px;"  type="number" name="<?php echo "music[]"; ?>" ></td>
+										<td class="inputs" style=' border-bottom: 1px solid white;'><input style="width:40px;"  type="number" name="<?php echo "bizna[]"; ?>" ></td>
+										<td class="inputs" style=' border-bottom: 1px solid white;'><input style="width:40px;"  type="number" name="<?php echo "agric[]"; ?>" ></td>
+										<td class="inputs" style=' border-bottom: 1px solid white;'><input style="width:40px;"  type="number" name="<?php echo "french[]"; ?>" ></td>
+										<td class="labels" style=' border-bottom: 1px solid white;'><input type="hidden" name="<?php echo "year[]"; ?>" value="<?php echo $year; ?>"><?php echo $year; ?></td>
 										<?php
 										echo "</tr>";
 									}

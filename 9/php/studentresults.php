@@ -71,22 +71,7 @@
 											?>
 									</select>
 								</td>
-								<td class="label">Class/Form</td>
-								<td class="inputs">
-									<select name="class" required>
-										<option value="">-select Class-</option>
-											<?php
-												require_once('../logic/connector.php');
-												$sql = "select * from class";
-												$result=$conn->query($sql);
-												if ($result->num_rows > 0) {
-													while($row = $result->fetch_assoc()) {
-														echo "<option value='".$row['clsname']."'>".$row['clsname']."</option>";
-													}
-												}	
-											?>
-									</select>
-								</td>
+							
 								
 								<td><input type="submit" name="query" value="Query" style="background:green;height:2.5rem;border-radius:10px;box-shadow:2px 5px 5px #23263C;color:white;font-size:1rem;"></td>
 							</tr>
@@ -96,19 +81,19 @@
 						<?php
 							require('../logic/connector.php');
 							if(isset($_POST['query'])){
-								$class = $_POST['class'];
+								//$class = $_POST['class'];
 								$examname = $_POST['examname'];	
 								$year = $_POST['year'];
 								//$stream = $_POST['stream'];
 								$admno = $_POST['admno'];
 								//$sql= "select * from results where  ";
-								$sql = "SELECT admno,names,math,eng,kisw,chem,phy,bio, SUM(math+eng+kisw+chem+phy+bio) as marks FROM results WHERE examname='$examname' AND class='$class' AND year='$year' AND admno='$admno' GROUP BY names ORDER BY marks DESC;";
+								$sql = "SELECT admno,names,math,eng,kisw,chem,phy,bio, SUM(math+eng+kisw+chem+phy+bio) as marks FROM results WHERE examname='$examname' AND admno='$admno' GROUP BY names ORDER BY marks DESC;";
 								//echo $sql;
 								$res=$conn->query($sql);
 							?>
 								<h2>Exam Results</h2>
-								<table>
-									<tr style="background:green;color:white;box-shadow:2px 4px 5px green;text-align:center;" >
+								<table style="width:100%;">
+									<tr style="background:green;color:white;box-shadow:2px 4px 5px green;text-align:center;height:3rem;" >
 										<!--td>#</td-->
 										<td>admno</td>
 										<td>Student Name</td>
@@ -119,11 +104,18 @@
 										<td>Chem</td>
 										<td>Phy</td>
 										<td>Bio</td>
+										<td>Histo</td>
+										<td>C.R.E</td>
+										<td>Comp</td>
+										<td>Music</td>
+										<td>Bizna</td>
+										<td>Agric</td>
+										<td>French</td>
 										<td>Total Marks</td>
 									</tr>
 									<?php
 										while($row=$res->fetch_assoc()){
-											echo "<tr>";
+											echo "<tr style='height:2.5rem;'>";
 												//echo "<td>".$row['id']."</td>";
 												echo "<td>".$row['admno']."</td>";
 												echo "<td>".$row['names']."</td>";
@@ -132,6 +124,13 @@
 												echo "<td>".$row['kisw']."</td>";
 												echo "<td>".$row['chem']."</td>";
 												echo "<td>".$row['phy']."</td>";
+												echo "<td>".$row['bio']."</td>";
+												echo "<td>".$row['bio']."</td>";
+												echo "<td>".$row['bio']."</td>";
+												echo "<td>".$row['bio']."</td>";
+												echo "<td>".$row['bio']."</td>";
+												echo "<td>".$row['bio']."</td>";
+												echo "<td>".$row['bio']."</td>";
 												echo "<td>".$row['bio']."</td>";
 												echo "<td>".$row['marks']."</td>";
 											echo "</tr>";
