@@ -184,6 +184,25 @@
 							<?php
 						}
 					?>
+					<?php
+						if(isset($_GET['error'])){
+							?>
+							<section class="popup" name="popup" id="popup">
+								<section class="meso">
+									<center>
+										<img src='../images/sucsess.jpg' style="width:100px;height:100px;"><br><br>
+										Error on Adding Student Admission N<sup>o</sup> Already Assigned<br><br><br>
+										<a href="addstudent.php">
+										<button onload="close()" style="background:dodgerblue;border-radius:10px;width:90px;text-align:center;height:40px;border:none;color:white;">OK</button>
+										</a>
+									</center>
+								</section>
+								<div id='hey'>
+								</div>
+							</section>
+							<?php
+						}
+					?>
 				</section>
 			</section>
 		</section>

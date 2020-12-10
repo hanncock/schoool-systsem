@@ -69,8 +69,8 @@
 					</form>
 					<section class="schls">
 						<h2>School Packages</h2>
-						<table>
-							<tr style="background:green;color:white;box-shadow:2px 4px 5px green;text-align:center;" >
+						<table style='width:100%'>
+							<tr style="background:green;color:white;box-shadow:2px 4px 5px green;text-align:center;height:3rem;" >
 									<td>#</td>
 									<td>Package Name</td>
 									<td>Applies to</td>

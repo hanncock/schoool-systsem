@@ -8,14 +8,12 @@
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 		<script>
 			function print(){
-				//var a=document.getElementById('printer').value;
 				var examname= document.getElementById('examname').value;
 				var clas= document.getElementById('class').value;
 				var year= document.getElementById('year').value;
-				//var stream= document.getElementById('stream').value;
-				//console.log(examname,clas,year,stream);
-				//console.log(ref);
-				window.open("../print/printformresults.php?examname=" + examname + "&class=" +clas + "&year=" +year, true);
+				var admno= document.getElementById('admno').value;
+				console.log(examname,clas,year,admno);
+				window.open("../print/printstudentresults.php?examname=" + examname + "&class=" +clas + "&year=" +year + "&admno=" +admno, true);
 			}
 		</script>
 	</head>
@@ -46,7 +44,6 @@
 					<form action="" class="addschl" name="school" onsubmit="return validateForm()" method="POST">
 						<table>
 							<tr>
-								<td class="label">Year</td>
 								<td class="inputs">
 									<select name="year">
 										<?php $i= 2000;
@@ -56,6 +53,8 @@
 										<?php }?>
 									</select>
 								</td>
+								<td class="label">Admn N<sup>o</sup></td>
+								<td class="inputs"><input type="text" name="admno" required></td>
 								<td class="label">Exam Name</td>
 								<td class="inputs">
 									<select name="examname" required>
@@ -88,6 +87,7 @@
 											?>
 									</select>
 								</td>
+								
 								<td><input type="submit" name="query" value="Query" style="background:green;height:2.5rem;border-radius:10px;box-shadow:2px 5px 5px #23263C;color:white;font-size:1rem;"></td>
 							</tr>
 						</table>
@@ -99,8 +99,10 @@
 								$class = $_POST['class'];
 								$examname = $_POST['examname'];	
 								$year = $_POST['year'];
+								//$stream = $_POST['stream'];
+								$admno = $_POST['admno'];
 								//$sql= "select * from results where  ";
-								$sql = "SELECT admno,names,math,eng,kisw,chem,phy,bio, SUM(math+eng+kisw+chem+phy+bio) as marks FROM results WHERE examname='$examname' AND class='$class' AND year='$year' GROUP BY names ORDER BY marks DESC;";
+								$sql = "SELECT admno,names,math,eng,kisw,chem,phy,bio, SUM(math+eng+kisw+chem+phy+bio) as marks FROM results WHERE examname='$examname' AND class='$class' AND year='$year' AND admno='$admno' GROUP BY names ORDER BY marks DESC;";
 								//echo $sql;
 								$res=$conn->query($sql);
 							?>
@@ -139,6 +141,7 @@
 								<input type="hidden" id="class" value="<?php echo $class; ?>">
 								<input type="hidden" id="examname" value="<?php echo $examname; ?>">
 								<input type="hidden" id="year" value="<?php echo $year; ?>">
+								<input type="hidden" id="admno" value="<?php echo $admno; ?>">
 								<button class="fa fa-print" style="background:green;color:white;width:auto;font-size:1rem;border-radius:10px;" onclick="print()" ><br>Print Results</button>
 										<?php
 							}

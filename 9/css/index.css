@@ -106,7 +106,7 @@ a{
     grid-gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
-h2{text-align:center;background:#23263C;color:white;border-radius:0.5rem;}
+h2{text-align:center;background:#23263C;color:white;border-radius:;height:3rem;}
 .box{
 	background:white;	
 	margin:5px ;
@@ -207,6 +207,10 @@ meso{
 	border-radius:10px;
 	padding: 10px;
 	background:lightgrey;
-	color:red;
+	color:black;
 	text-align:center;
+}
+.payment{
+	    display: grid;
+    grid-template-columns: 40% 60%;
 }

@@ -6,6 +6,26 @@
 		<link rel="stylesheet" type="text/css" href="../css/index.css">
 		<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script type="text/javascript">
+			/*var auto_refresh = setInterval(
+			function loadq() {
+				$('#popup').load('#popup');
+			}, 1000);*/
+			
+			function display_c(){
+				var refresh=1000; // Refresh rate in milli seconds
+				mytime=setTimeout('display_ct()',refresh)
+			}
+			
+			function load(){
+				console.log('123');
+				var i, tabcontent;
+				tabcontent = document.getElementsByClassName("popup");
+				for (i = 0; i < tabcontent.length; i++) {
+					tabcontent[i].style.display = "none";
+				}
+			}
+		</script>
 	</head>
 	<body>
 	<section class="container">
@@ -28,110 +48,108 @@
 			<section class="display">
 				<?php include 'menu.php'?>
 				<section class="disp">
-<?php
-require_once("../logic/connector.php");
-require_once('../php/session.php');
+					<?php
+						require_once("../logic/connector.php");
+						require_once('../php/session.php');
 
-$user = $_SESSION["username"];
-$sql1 = "select * from student";
-$res = $conn->query($sql1);
-if($res->num_rows>0){
-	echo "<table>";
-	while($row=$res->fetch_assoc()){
-		 echo "<tr>";
-		 echo "<td>" . $row['id'] . "</td>";
-		 echo "<td>" . $row['fname'].$row['sirname'].$row['tname'].$row['othername'] . "</td>";
-		 ?>
-		  <td>
-			<button>
-				<a href="messo.php?edit=<?php echo $row['id']?>">Compose</a>
-			</button>
-			<!--button style="background:green;"
-				<a href="messo.php?edit=<!--?php echo $row['id'] ?>" >Compose</a>
-			</button-->
-		</td></tr>
-		<?php
-	}
-}
-if(isset($_GET['edit'])){
-	$id = $_GET['edit'];
-	$update = true;
-	$sql3="select * from student WHERE id=$id";
-	$result=$conn->query($sql3);
-	$row = $result->fetch_assoc();
-		
-	$receiver = $row['fname'];
-	?>
-		<section >
-		<form method="POST" action="">
-			Mesage<input type="text" name="meso">
-			<input type="hidden" value="<?php echo $receiver; ?>" name="receiver">
-			<input type="submit" name="send" value="Send">
-		</form>
-		</section>
-	<?php
-		if(isset($_POST['send'])){
-		//$user = $_SESSION["username"];
-
-			$receiver = $_POST['receiver'];
-			$user = $_SESSION["username"];
-			$meso = $_POST['meso'];
-			$sql ="INSERT INTO message(receiver,sender,message)values('$receiver','$user','$meso')";
-			if($conn->query($sql)===TRUE){
-				echo "message sent";
-			}else{
-				echo "message not sent";
-			}
-		}else{
-			echo "";
-		}
-	}
-/*$sql4 ="select * from message where receiver='Soke' and sender='Seizer' or receiver='Seizer' and sender='Soke'";
-$res=$conn->query($sql4);
-if($res->num_rows>0){
-	while($row=$res->fetch_assoc()){
-		echo "<table><tr>";
-		if($row['receiver'] == 'Soke'){
-			echo "<td style='background:lightgrey;'>". $row['message']."</td>";
-		}else{
-			echo "no message";
-		}
-		if($row['sender']=='Soke'){
-			echo "<td style='background:yellow;'>". $row['message']."</td>";
-		}else{
-			echo"</tr></table>";
-			}
-		/*$sender =$row['sender'];
-		$eceiver =$row['receiver'];
-		 echo "<tr>";
-		 echo "<td>" . $row['message'] . "</td>";
-		echo "</tr>";*/
-	//}*/
-	
-	$sql4 = "select * from message";
-	$rs=$conn->query($sql4);
-	if($rs->num_rows>0){
-		$user = $_SESSION["username"];
-		echo "<table>
-				<tr>
-					<th></th>
-				</tr>";
-		while($row=$rs->fetch_assoc()){
-			echo "<tr>";
-			if($row['sender']==$user){
-				//echo "<td><button>".$row['message']."</button></td>";
-				echo "<td style='float:right;'><sup>". $row['sender']."</sup>".$row['message']."</td>";
-			}if($row['sender']!=$user){
-				echo "<td><button><sup>". $row['sender']."</sup>".$row['message']."</button></td>";
-			}
-			echo "</tr>";
-			//echo "<tr>";
-			//echo "<td><sup>". $row['sender']."</sup>".$row['message']."</td>";
-			//echo "</tr>";
-		}
-	}
-//}	
-?>
+						$user = $_SESSION["username"];
+						
+						$sql1 = "select * from credentials where username='$user'";
+						//echo $sql1;
+						$rs=$conn->query($sql1);
+						if($rs->num_rows>0){
+							$row=$rs->fetch_assoc();
+							$sender_id = $row['id'];
+						}
+						//echo $row['id'];
+						
+						$sql="Select * from credentials";
+						$res = $conn->query($sql);
+						if($res->num_rows>0){
+							echo "<table>";
+							while($row=$res->fetch_assoc()){
+								echo "<tr>";
+									?>
+									<td>
+										<a href="messo.php?edit=<?php echo $row['id']?>">
+											<button style="width:300px;" onclick="load()">
+												<img src='../images/avatar.png' style='height:40px;width:auto-fit;border-radius:50px;float:left;'>
+												<?php echo $row['username']; ?>
+												<!--?php echo  $row['fname']." ".$row['sirname']." ".$row['tname']." ".$row['othername'] ;?-->
+											</button>
+										</a>
+									</td>
+								</tr>
+								<?php
+							}
+						}				
+						if(isset($_GET['edit'])){
+							$id = $_GET['edit'];
+							
+							$sql1 = "select username from credentials where id=$id";
+							$rs=$conn->query($sql1);
+							$row=$rs->fetch_assoc();
+							$receiver=$row['username'];
+							
+							$update = true;
+							$sql ="select * from message where receiver='$user' AND sender='$receiver' OR receiver='$receiver' AND sender='$user'";
+							$res=$conn->query($sql);
+							//$row = $rs->fetch_assoc();
+							?>
+							<section style="width:300px;top:300;float:right;height:400px;z-index:1;background:rgb(0,0,0,0.8);border-radius:10px;" name="popup" id="popup">
+								<h2><?php echo $receiver; ?></h2>
+								<section class="meso" style="width:300px;height:400px;overflow-y:scroll;background:url('../images/download.jpg');" >
+									
+									<?php 
+										//echo "hello";
+										if($res->num_rows>0){
+											while($row=$res->fetch_assoc()){
+												if($row['receiver'] == $user){
+													?>
+													<button style="float:left;background:grey;border-radius:10px;width:auto-fit;height:auto;">
+														<span><?php echo $row['message'];?></span>
+													</button><br><br>
+													<?php
+												}
+												if($row['sender']==$user){
+													?>
+													<button style="float:right;background:lightgrey;border-radius:10px;width:auto-fit;height:auto;">
+														<span><?php echo $row['message'];?></span>
+													</button><br><br>
+													<?php
+												}
+											}
+										}	
+										
+										if(isset($_POST['sendmeso'])){
+											$id = $id;
+											$receiv =$receiver;
+											$sender = $sender_id;
+												//echo $sender;
+											$message = $_POST['message'];
+											$sql ="INSERT INTO message(receiver,sender,message,sender_no,receiver_no)VALUES('$receiv','$user','$message','$sender','$id')";
+												//echo $sql;
+											if($conn->query($sql) === TRUE){
+												//echo "message sent";
+											}else{
+												echo "not sent";
+											}
+										
+										}
+										
+									?>
+									
+								</section>
+								<form action="" method="POST">
+									<span style="width:auto-fit;display:flex;">
+										<input type="text" name="message" style="width:250px;border-radius:10px;">
+										<button type="submit" name="sendmeso" style="background:green"><i class="fa fa-paper-plane" aria-hidden="true" style="font-size:1.5rem;" type="submit"></i></button>
+									</span>
+								</form>
+							</section>
+							<?php
+						}
+					?>
 				</section>
 			</section>
 		</section>

@@ -20,9 +20,8 @@ $sql = "insert into school(schlname,schladdress,schlvat,schlhealth,schllocation,
 
 	
 if($conn->query($sql) === TRUE){
-			
 			echo "school sucesfully created"."<br>" ;
-			header("Location:../php/addschool.php");
+			header("Location:../php/addschool.php?success");
 		}else{
 			echo "Error:";
 		}	
@@ -37,17 +36,17 @@ $result=$conn->query($sql1);
 		
     // output data of each row
     while($row = $result->fetch_assoc()) {
-	 echo "<tr>";
-			echo "<td>" . $row['id'] . "</td>";
-			echo "<td>" . $row['schlname'] . "</td>";	 
-			echo "<td>" . $row['schladdress'] . "</td>";
-			echo "<td>" . $row['schlvat'] . "</td>";
-			echo "<td>" . $row['schlhealth'] . "</td>";
-			echo "<td>" . $row['schllocation'] . "</td>";
-			echo "<td>" . $row['schlpin'] . "</td>";
-			echo "<td>" . $row['website'] . "</td>";
-			echo "<td>" . $row['email'] . "</td>";
-			echo "<td>" . $row['schlphone'] . "</td>";
+	 echo "<tr style='height:3rem'>";
+			echo "<td style=' border-bottom: 1px solid white;'>" . $row['id'] . "</td>";
+			echo "<td style=' border-bottom: 1px solid white;'>" . $row['schlname'] . "</td>";	 
+			echo "<td style=' border-bottom: 1px solid white;'>" . $row['schladdress'] . "</td>";
+			echo "<td style=' border-bottom: 1px solid white;'>" . $row['schlvat'] . "</td>";
+			echo "<td style=' border-bottom: 1px solid white;'>" . $row['schlhealth'] . "</td>";
+			echo "<td style=' border-bottom: 1px solid white;'>" . $row['schllocation'] . "</td>";
+			echo "<td style=' border-bottom: 1px solid white;'>" . $row['schlpin'] . "</td>";
+			echo "<td style=' border-bottom: 1px solid white;'>" . $row['website'] . "</td>";
+			echo "<td style=' border-bottom: 1px solid white;'>" . $row['email'] . "</td>";
+			echo "<td style=' border-bottom: 1px solid white;'>" . $row['schlphone'] . "</td>";
 			?>
 			<td>
 				<button style="background:green;"><a href="addschool.php?edit=<?php echo $row['id'] ?>" >
@@ -70,7 +69,12 @@ $result=$conn->query($sql1);
 		$id = $_GET['delete'];
 		$sql2 =  "DELETE FROM school WHERE id=$id";
 		$result = $conn->query($sql2);
-		header("Location:../php/addschool.php");
+		if($conn->query($sql2) === TRUE){
+			echo "school sucesfully created"."<br>" ;
+			header("Location:../php/addschool.php?popup");
+		}
+		
+		
 	}
 	
 	if(isset($_GET['edit'])){
@@ -103,8 +107,8 @@ $result=$conn->query($sql1);
 		$schlphone = $row['schlphone'];
 		 ?>
 		 <section class="edit">
-		 <section class="editinfo">
-			<form method="POST" action="../logic/school.php"class="addschl">
+			<section class="editinfo">
+				<form method="POST" action="../logic/school.php"class="addschl">
 						<h2>Edit School</h2>
 						<table>
 							<tr style="height:100px;">
@@ -139,7 +143,7 @@ $result=$conn->query($sql1);
 							<button  class="save" type="submit" name="save" value="<?php echo $row['id']; ?>">Save</button>
 							<button class="close"><a href="../php/addschool.php" >Cancel</a></button>								
 						</center>
-					</form>
+				</form>
 			</section>		
 		</section>
 		 <?php
@@ -170,7 +174,7 @@ $result=$conn->query($sql1);
 			echo "Error:";
 		}	
 	}else{
-		echo "<span style='color:red'>enter missing school edit details</span>";
+		//echo "<span style='color:red'>enter missing school edit details</span>";
 		
 }
 

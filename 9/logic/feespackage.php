@@ -27,12 +27,12 @@ $result=$conn->query($sql1);
 		
     // output data of each row
     while($row = $result->fetch_assoc()) {
-	 echo "<tr>";
-			echo "<td>" . $row['id'] . "</td>";
-			echo "<td>" . $row['package'] . "</td>";	 
-			echo "<td>" . $row['class'] . "</td>";
+	 echo "<tr style='height:2.5rem;'>";
+			echo "<td class='labels' style=' border-bottom: 1px solid white;'>" . $row['id'] . "</td>";
+			echo "<td class='labels' style=' border-bottom: 1px solid white;'>" . $row['package'] . "</td>";	 
+			echo "<td class='labels' style=' border-bottom: 1px solid white;'>" . $row['class'] . "</td>";
 			echo "<td> Ksh " . $row['amnt'] . "</td>";
-			echo "<td>" . $row['created_on'] . "</td>";
+			echo "<td class='labels' style=' border-bottom: 1px solid white;'>" . $row['created_on'] . "</td>";
 			?>
 			<td>
 				<button style="background:green;"><a href="addfeespackage.php?edit=<?php echo $row['id'] ?>" >

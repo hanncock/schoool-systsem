@@ -108,8 +108,8 @@
 					</form>
 					<section class="schls">
 						<h2>School List</h2>
-						<table>
-							<tr style="background:green;color:white;box-shadow:2px 4px 5px green;text-align:center;" >
+						<table style="width:100%;">
+							<tr style="background:green;color:white;box-shadow:2px 4px 5px green;text-align:center;height:3rem;">
 									<td>#</td>
 									<td>School Name</td>
 									<td>School Adress</td>
@@ -126,7 +126,44 @@
 						</table>
 						
 					</section>
-					
+					<?php
+						if(isset($_GET['success'])){
+							?>
+							<section class="popup" name="popup" id="popup">
+								<section class="meso">
+									<center>
+										<img src='../images/sucsess.jpg' style="width:100px;height:100px;"><br><br>
+										School Has Been Created Succesffully<br><br><br>
+										<a href="addschool.php">
+										<button onload="close()" style="background:dodgerblue;border-radius:10px;width:90px;text-align:center;height:40px;border:none;color:white;">OK</button>
+										</a>
+									</center>
+								</section>
+								<div id='hey'>
+								</div>
+							</section>
+							<?php
+						}
+					?>
+					<?php
+						if(isset($_GET['popup'])){
+							?>
+							<section class="popup" name="popup" id="popup">
+								<section class="meso">
+									<center>
+										<img src='../images/sucsess.jpg' style="width:100px;height:100px;"><br><br>
+										School Has Been Deleted Succesffully<br><br><br>
+										<a href="addschool.php">
+										<button onload="close()" style="background:dodgerblue;border-radius:10px;width:90px;text-align:center;height:40px;border:none;color:white;">OK</button>
+										</a>
+									</center>
+								</section>
+								<div id='hey'>
+								</div>
+							</section>
+							<?php
+						}
+					?>
 				</section>
 			</section>
 		</section>

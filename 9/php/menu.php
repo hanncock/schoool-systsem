@@ -2,8 +2,8 @@
 					<div class="userrole">
 					<?php
 						require_once('session.php');
-						echo "welcome ".$_SESSION["username"]."<br>";
-						?><br>
+						echo "welcome <span style='color:yellow'>".$_SESSION["username"]."</span><br>";
+						?>
 						Role:<span style="color:grey;">Admin</span>
 					</div>
 					<button  class="menubtn">
@@ -26,12 +26,15 @@
 					</button>
 					<button  class="menubtn">
 						<a href=""><i class="fa fa-book" style="font-size:2.5rem;"></i>Library</span></a>
+						<div class="submenu">
+							<a href="registerbook.php"><i class="fa fa-phone"></i>Register Books</span></a><br>
+							<a href="issuebook.php"><i class="fa fa-phone"></i>Issue Books</span></a><br>
+						</div>
 					</button>
 					<button  class="menubtn">
 						<a href=""><i class="fa fa-usd" style="font-size:2.5rem;"></i>Accounts</span></a>
 						<div class="submenu">
-							<a href="studentfees.php"><i class="fa fa-phone"></i>Student Fees</span></a><br>
-							<a href="chargetostudent.php"><i class="fa fa-phone"></i>Delete School</span></a><br>
+							<a href="studentfees.php"><i class="fa fa-phone"></i>Charge Student Fees</span></a><br>
 							<a href="addpayment.php"><i class="fa fa-phone"></i>Payment/Receipts</span></a><br>
 							<a href="addfeespackage.php"><i class="fa fa-phone"></i>Fees Packages</span></a><br>
 						</div>
@@ -43,7 +46,6 @@
 							<a href="processresult.php"><i class="fa fa-phone"></i>Process Results</span></a><br>
 							<a href=""><i class="fa fa-phone"></i>Register Subject</span></a><br>
 							<a href="addexam.php"><i class="fa fa-phone"></i>Regiser Exam</span></a><br>
-							<!--a href="resultafterselect.php"><i class="fa fa-phone"></i>Exam After Select</span></a><br-->
 						</div>
 					</button>
 					<button  class="menubtn">

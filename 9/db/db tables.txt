@@ -147,6 +147,27 @@ create table results(
 	year int(4)not null
 );
 
+create table library(
+	id int(6)primary key not null auto_increment,
+	bookname varchar(20)not null,
+	bookcode varchar(20)not null,
+	copies int(5)not null,
+	category varchar(10)not null,
+	created_on datetime default current_timestamp,
+	user varchar(10)not null
+);
+
+create table issued(
+	id int(6)primary key not null auto_increment,
+	admno int(6)not null,
+	names varchar(40)not null,
+	bookname varchar(20)not null,
+	bookcode varchar(20)not null,
+	copies int(5)not null,
+	category varchar(10)not null,
+	created_on datetime default current_timestamp,
+	user varchar(10)not null
+);
 
 complex queries(
 	SELECT names,math,eng,kisw,chem,phy,bio, SUM(math+eng+kisw+chem+phy+bio) as marks FROM results WHERE examname='examn1'AND class='Form 2' GROUP BY names ORDER BY marks DESC;

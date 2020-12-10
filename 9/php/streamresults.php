@@ -12,10 +12,10 @@
 				var examname= document.getElementById('examname').value;
 				var clas= document.getElementById('class').value;
 				var year= document.getElementById('year').value;
-				//var stream= document.getElementById('stream').value;
+				var stream= document.getElementById('stream').value;
 				//console.log(examname,clas,year,stream);
 				//console.log(ref);
-				window.open("../print/printformresults.php?examname=" + examname + "&class=" +clas + "&year=" +year, true);
+				//window.open("../print/printstreamresults.php?examname=" + examname + "&class=" +clas + "&year=" +year + "&stream=" +stream, true);
 			}
 		</script>
 	</head>
@@ -43,7 +43,7 @@
 							</button>
 						</a>
 					</div>
-					<form action="" class="addschl" name="school" onsubmit="return validateForm()" method="POST">
+					<form action="" class="addschl" name="school" method="POST">
 						<table>
 							<tr>
 								<td class="label">Year</td>
@@ -67,6 +67,22 @@
 												if ($result->num_rows > 0) {
 													while($row = $result->fetch_assoc()) {
 														echo "<option value='".$row['examname']."'>".$row['examname']."</option>";
+													}
+												}	
+											?>
+									</select>
+								</td>
+								<td class="label">Stream</td>
+								<td class="inputs">
+									<select name="stream" required>
+										<option value="">-select Stream-</option>
+											<?php
+												require_once('../logic/connector.php');
+												$sql = "select * from stream";
+												$result=$conn->query($sql);
+												if ($result->num_rows > 0) {
+													while($row = $result->fetch_assoc()) {
+														echo "<option value='".$row['strmname']."'>".$row['strmname']."</option>";
 													}
 												}	
 											?>
@@ -98,10 +114,10 @@
 							if(isset($_POST['query'])){
 								$class = $_POST['class'];
 								$examname = $_POST['examname'];	
+								$stream = $_POST['stream'];	
 								$year = $_POST['year'];
 								//$sql= "select * from results where  ";
-								$sql = "SELECT admno,names,math,eng,kisw,chem,phy,bio, SUM(math+eng+kisw+chem+phy+bio) as marks FROM results WHERE examname='$examname' AND class='$class' AND year='$year' GROUP BY names ORDER BY marks DESC;";
-								//echo $sql;
+								$sql = "SELECT admno,names,math,eng,kisw,chem,phy,bio, SUM(math+eng+kisw+chem+phy+bio) as marks FROM results WHERE examname='$examname' AND class='$class' AND year='$year' AND stream='$stream' GROUP BY names ORDER BY marks DESC;";
 								$res=$conn->query($sql);
 							?>
 								<h2>Exam Results</h2>
@@ -138,12 +154,12 @@
 								</table>
 								<input type="hidden" id="class" value="<?php echo $class; ?>">
 								<input type="hidden" id="examname" value="<?php echo $examname; ?>">
+								<input type="hidden" id="stream" value="<?php echo $stream; ?>">
 								<input type="hidden" id="year" value="<?php echo $year; ?>">
 								<button class="fa fa-print" style="background:green;color:white;width:auto;font-size:1rem;border-radius:10px;" onclick="print()" ><br>Print Results</button>
 										<?php
 							}
 						?>
-						
 					</section>
 				</section>
 			</section>

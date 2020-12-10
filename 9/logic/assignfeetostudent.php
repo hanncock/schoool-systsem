@@ -1,20 +1,22 @@
 <section class="edit">
+<section class="editinfo">
 	<?php
-		$admno = $_GET['edit'];
+		if(isset($_GET['edit'])){
 		$sql = "SELECT fname,sirname,tname,othername,admno,class,stream FROM student where  admno=$admno";
 			$result=$conn->query($sql);
 			if ($result->num_rows > 0) {
 				$row = $result->fetch_assoc();
 				$name = $row['fname']." ".$row['sirname']." ".$row['tname']."".$row['othername'];
 			}
-			$sql = "SELECT fname,sirname,tname,othername,admno,class,stream FROM student where  admno=$admno";
+		}	
+			/*$sql = "SELECT fname,sirname,tname,othername,admno,class,stream FROM student where  admno=$admno";
 			$result=$conn->query($sql);
 			if ($result->num_rows > 0) {
 				$row = $result->fetch_assoc();
 				$name = $row['fname']." ".$row['sirname']." ".$row['tname']."".$row['othername'];
-			}
+			}*/
 	?>
-	<form method="POST">
+	<form method="POST" action="">
 		<h2>Charge Fees</h2>
 		<table>
 			<tr>
@@ -73,6 +75,7 @@
 					</tr>";
 			while($row = $result->fetch_assoc()){
 				echo "<tr>";
+				$id = $row['id'];
 					echo "<td>".$row['id']."</td>";
 					echo "<td>".$row['admno']."</td>";
 					echo "<td>".$row['name']."</td>";
@@ -81,17 +84,62 @@
 					echo "<td>".$row['created_on']."</td>";
 	?>
 					<td>
-						<button style="background:green;"><a href="addschool.php?edit=<?php echo $row['id'] ?>" >
+						<button style="background:green;"><a href="addschool.php?edt=<?php echo $id; ?>" >
 							<i class="fa fa-edit"  class="action"></i></a>
 						</button>
-						<button style="background:red;"><a href="../logic/school.php?delete=<?php echo $row['id'] ?>">
+						<button style="background:red;"><a href="../logic/assignfeetostudent.php?delete=<?php echo $id; ?>">
 							<i class="fa fa-trash"  class="action"></i></a>
 						</button>
 					</td>
-	<?php
-				echo "</tr>
-				</table>";	
+	<?php	
+				echo "</tr>";
 			}
+			echo "</table>";
 		}
 	?>
+</section>	
+<?php
+
+	require_once('connector.php');
+	if(isset($_GET['delete'])){
+		$id = $_GET['delete'];
+		$sql2 =  "DELETE FROM studentfees WHERE id=$id";
+		$result = $conn->query($sql2);
+		if($conn->query($sql2) === TRUE){
+			echo "Fee Package Removed sucesfully"."<br>" ;
+			//header("Location:../php/edituselesstudent.php?del");
+		}
+		
+	}
+	if(isset($_GET['edt'])){
+		$id = $_GET['edt'];
+		$sql2 =  "DELETE FROM studentfees WHERE id=$id";
+		$result = $conn->query($sql2);
+		if($conn->query($sql2) === TRUE){
+			echo "Fee Package Removed sucesfully"."<br>" ;
+			header("Location:../php/edituselesstudent.php?del");
+		}
+		
+	}
+?>
+
+<?php
+						if(isset($_GET['popup'])){
+							?>
+							<section class="popup" name="popup" id="popup">
+								<section class="meso">
+									<center>
+										<img src='../images/sucsess.jpg' style="width:100px;height:100px;"><br><br>
+										School Has Been Deleted Succesffully<br><br><br>
+										<a href="addschool.php">
+										<button onload="close()" style="background:dodgerblue;border-radius:10px;width:90px;text-align:center;height:40px;border:none;color:white;">OK</button>
+										</a>
+									</center>
+								</section>
+								<div id='hey'>
+								</div>
+							</section>
+							<?php
+						}
+					?>
 </section>							

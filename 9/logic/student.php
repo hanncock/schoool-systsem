@@ -1,44 +1,39 @@
 <?php
-require_once('connector.php');
-if(isset($_POST['admno'])){	
-	$admno =$_POST['admno'];
-	$fname = $_POST['fname'];
-	$sirname = $_POST['sirname'];
-	$tname = $_POST['tname'];
-	$oname = $_POST['oname'];
-	$dob =$_POST['dob'];
-	$gender =$_POST['gender'];
-	$class =$_POST['class'];
-	$stream = $_POST['stream'];
-	$email = $_POST['email'];
-	$phone = $_POST['phone'];
-	$county = $_POST['county'];
-	$status = 'Active';
+	require_once('connector.php');
+	if(isset($_POST['AddStudent'])){	
+		$admno =$_POST['admno'];
+		$fname = $_POST['fname'];
+		$sirname = $_POST['sirname'];
+		$tname = $_POST['tname'];
+		$oname = $_POST['oname'];
+		$dob =$_POST['dob'];
+		$gender =$_POST['gender'];
+		$class =$_POST['class'];
+		$stream = $_POST['stream'];
+		$email = $_POST['email'];
+		$phone = $_POST['phone'];
+		$county = $_POST['county'];
+		$status = 'Active';
 
-$sql = "insert into student(admno,fname,sirname,tname,othername,dob,gender,class,stream,email,phone,county,status)
+		$sql = "insert into student(admno,fname,sirname,tname,othername,dob,gender,class,stream,email,phone,county,status)
 						VALUES
-		('$admno','$fname','$sirname','$tname','$oname','$dob','$gender','$class','$stream','$email','$phone','$county','$status')";
+			('$admno','$fname','$sirname','$tname','$oname','$dob','$gender','$class','$stream','$email','$phone','$county','$status')";
 
-	
-if($conn->query($sql) === TRUE){
+		if($conn->query($sql) === TRUE){
 			header("Location:../php/addstudent.php?popup");
 		}else{
-			echo "Error:";
+			header("Location:../php/addstudent.php?error");
 		}	
-}else{
-		//echo "enter missing student details";
-		//header("Location:../ui/addschool.php");
-}	
+	}	
 
-$sql = "select * from student";
-$result = $conn->query($sql);
+	$sql = "select * from student";
+	$result = $conn->query($sql);
 	
 	if ($result->num_rows > 0) {
-    // output data of each row
-	?>
-	<table>
+		?>
+		<table style="width:100%">
 							<h2>Student List</h2>
-							<tr style="background:green;color:white;box-shadow:2px 4px 5px green;text-align:center;" >
+							<tr style="background:green;color:white;box-shadow:2px 4px 5px green;text-align:center;height:3rem;" >
 									<td>#</td>
 									<td>Admission No</td>
 									<td>Names of Student</td>
@@ -51,44 +46,38 @@ $result = $conn->query($sql);
 									<td>County</td>
 									<td></td>
 							</tr>
-	<?php
-    while($row = $result->fetch_assoc()) {
-	 echo "<tr>";
-			echo "<td>" . $row['id'] . "</td>";	
-			echo "<td>" . $row['admno'] . "</td>";	
-			echo "<td>" . $row['fname']." ".$row['sirname']." ".$row['tname']."".$row['othername']."</td>";
-			echo "<td>" . $row['dob'] . "</td>";
-			echo "<td>" . $row['gender'] . "</td>";
-			echo "<td>" . $row['class'] . "</td>";
-			echo "<td>" . $row['stream'] . "</td>";
-			echo "<td>" . $row['email'] . "</td>";
-			echo "<td>" . $row['phone'] . "</td>";
-			echo "<td>" . $row['county'] . "</td>";
-	?>
+			<?php
+			while($row = $result->fetch_assoc()) {
+				echo "<tr style='height:3rem;'>";
+					echo "<td style=' border-bottom: 1px solid white;'>" . $row['id'] . "</td>";	
+					echo "<td style=' border-bottom: 1px solid white;'>" . $row['admno'] . "</td>";	
+					echo "<td style=' border-bottom: 1px solid white;'>" . $row['fname']." ".$row['sirname']." ".$row['tname']."".$row['othername']."</td>";
+					echo "<td style=' border-bottom: 1px solid white;'>" . $row['dob'] . "</td>";
+					echo "<td style=' border-bottom: 1px solid white;'>" . $row['gender'] . "</td>";
+					echo "<td style=' border-bottom: 1px solid white;'>" . $row['class'] . "</td>";
+					echo "<td style=' border-bottom: 1px solid white;'>" . $row['stream'] . "</td>";
+					echo "<td style=' border-bottom: 1px solid white;'>" . $row['email'] . "</td>";
+					echo "<td style=' border-bottom: 1px solid white;'>" . $row['phone'] . "</td>";
+					echo "<td style=' border-bottom: 1px solid white;'>" . $row['county'] . "</td>";
+			?>
 			<td>
-				<button style="background:green;"><a href="addstudent.php?edit=<?php echo $row['id'] ?>" >
-					<i class="fa fa-edit"  class="action"></i></a>
+				<button style="background:#23263C;"><a href="editstudent.php?edit=<?php echo $row['id'] ?>" >
+					<i class="fa fa-edit" style="color:white;"  class="action"></i></a>
 				</button>
-				<button style="background:red;"><a href="../logic/student.php?delete=<?php echo $row['id'] ?>">
-					<i class="fa fa-trash"  class="action"></i>
+				<button style="background:white;"><a href="../logic/editstudent.php?delete=<?php echo $row['id'] ?>">
+					<i class="fa fa-trash"  style="color:red;" class="action"></i>
 				</a></button>
 			</td>
-		<?php	
-	 echo "</tr>";
-	}
-	echo "</table>";
+			<?php	
+			echo "</tr>";
+			}
+		echo "</table>";
 	}
 	else{
-		
 		echo "no students ";
 	}
 	
-	if(isset($_GET['delete'])){
-		$id = $_GET['delete'];
-		$sql2 =  "DELETE FROM student WHERE id=$id";
-		$result = $conn->query($sql2);
-		header("Location:../php/addstudent.php");
-	}
+	
 	
 	if(isset($_GET['edit'])){
 		
@@ -101,6 +90,7 @@ $result = $conn->query($sql);
 		$result=$conn->query($sql3);
 		$row = $result->fetch_assoc();
 		
+		$id = $row['id'];
 		$admno =$row['admno'];
 		$fname = $row['fname'];
 		$sirname = $row['sirname'];
@@ -116,11 +106,13 @@ $result = $conn->query($sql);
 		$status = $row['status'];
 		 ?>
 		 <section class="edit" >
-			<form action="../logic/student.php" class="addschl" method="POST">
+			<section class="editinfo">
+			<form action="../logic/editstudent.php" class="addschl" method="POST">
 				<h2>Add Student</h2>
 				<table>
-					<tr>
+					<tr style="height:100px;">
 						<td class="label">First Name:</td>
+						<?php echo 'this is the'.$id;?>
 						<td class="inputs"><input type="text" name="fname" value="<?php echo $fname ?>"></td>
 						<td class="label">Sir Name</td>
 						<td class="inputs"><input type="text" name="sirname" value="<?php echo $sirname ?>"></td>
@@ -131,7 +123,7 @@ $result = $conn->query($sql);
 							<input type="file" name="studentphoto">
 						</td>
 					</tr>
-					<tr>
+					<tr style="height:100px;">
 						<td class="label">Other Name</td>
 						<td class="inputs"><input type="text" name="oname" value="<?php echo $oname ?>"></td>
 						<td class="label">D.O.B</td>
@@ -145,7 +137,7 @@ $result = $conn->query($sql);
 							</select>
 						</td>	
 					</tr>
-					<tr>
+					<tr style="height:100px;">
 						<td class="label">Admission No</td>
 						<td class="inputs"><input type="text" name="admno" value="<?php echo $admno ?>"></td>
 						<td class="label">Class</td>
@@ -181,7 +173,7 @@ $result = $conn->query($sql);
 							</select>
 						</td>
 					</tr>
-					<tr>	
+					<tr style="height:100px;">	
 						<td class="label">Email</td>
 						<td class="inputs"><input type="text" name="email" value="<?php echo $email ?>"></td>
 						<td class="label">Phone No</td>
@@ -204,44 +196,30 @@ $result = $conn->query($sql);
 					</tr>
 				</table>
 				<center>
-					<button  class="save" type="submit" name="save" value="<?php echo $row['id']; ?>">Save</button>		
-					<button class="close"><a href="addstudent.php" >Cancel</a></button>
+					<button  class="save" type="submit" name="save" value="<?php echo $id; ?>">Save</button>	
+					<button class="close"><a href="../php/editstudent.php" >Cancel</a></button>
 					</center>
 			</form>
+			</section>
 		</section>
 		 <?php
 	}
 	
-	if(isset($_POST['save'])){	
-		$id = $_POST['save'];
-		$admno =$_POST['admno'];
-		$fname = $_POST['fname'];
-		$tname = $_POST['tname'];
-		$sirname = $_POST['sirname'];
-		$oname = $_POST['oname'];
-		$dob =$_POST['dob'];
-		$gender =$_POST['gender'];
-		$class =$_POST['class'];
-		$stream = $_POST['stream'];
-		$email = $_POST['email'];
-		$phone = $_POST['phone'];
-		$county = $_POST['county'];
-		$statu = $_POST['status'];
-
-	$sql4 = "UPDATE student SET admno='$admno',fname='$fname',sirname='$sirname',tname='$tname',othername='$oname'
-		,dob='$dob',gender='$gender',phone='$phone',class='$class',stream='$stream',email='$email',status='$status' WHERE id=$id";
-
 	
-	if($conn->query($sql4) === TRUE){
-			echo "student edited sucesfully"."<br>" ;
-			header("Location:../php/addstudent.php");
-		}else{
-			echo "Error:";
-		}	
-	}else{
-		//echo "<span style='color:red'>enter missing school edit details</span>";
+	/*if(isset($_POST['save'])){	
+	
 		
-}
+
+		
+
+		//echo $sql4;
+		if($conn->query($sql4) === TRUE){
+			header("Location:addstudent.php");
+		}else{
+			echo "connection error";
+		}
+		
+	}*/
 
 $conn->close();
 

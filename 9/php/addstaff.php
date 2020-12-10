@@ -118,8 +118,8 @@
 					</form>
 					<section class="schls">
 						<h2>Staff List</h2>
-						<table>
-							<tr style="background:green;color:white;box-shadow:2px 4px 5px green;text-align:center;" >
+						<table style="width:100%;">
+							<tr style="background:green;color:white;box-shadow:2px 4px 5px green;text-align:center;height:3rem;" >
 									<td>#</td>
 									<td>Photo</td>
 									<td>Names</td>

@@ -85,8 +85,27 @@
 								<section class="meso">
 									<center>
 										<img src='../images/sucsess.jpg' style="width:100px;height:100px;"><br><br>
-										Student Has Been Added Succesffully<br><br><br>
-										<a href="addstudent.php">
+										Student Has Been Updated Succesfully<br><br><br>
+										<a href="editstudent.php">
+										<button onload="close()" style="background:dodgerblue;border-radius:10px;width:90px;text-align:center;height:40px;border:none;color:white;">OK</button>
+										</a>
+									</center>
+								</section>
+								<div id='hey'>
+								</div>
+							</section>
+							<?php
+						}
+					?>
+					<?php
+						if(isset($_GET['del'])){
+							?>
+							<section class="popup" name="popup" id="popup">
+								<section class="meso">
+									<center>
+										<img src='../images/sucsess.jpg' style="width:100px;height:100px;"><br><br>
+										Student Has Been Deleted Succesfully<br><br><br>
+										<a href="editstudent.php">
 										<button onload="close()" style="background:dodgerblue;border-radius:10px;width:90px;text-align:center;height:40px;border:none;color:white;">OK</button>
 										</a>
 									</center>
