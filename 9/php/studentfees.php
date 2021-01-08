@@ -96,13 +96,13 @@
 							</tr>
 								<?php
 								$admno = $_POST['admno'];
-								$sql = "SELECT fname,sirname,tname,othername,admno,class,stream FROM student where  admno LIKE '%$admno%' ";
+								$sql = "SELECT id,fname,sirname,tname,othername,admno,class,stream FROM student where  admno LIKE '%$admno%' ";
 								$result=$conn->query($sql);
 								if ($result->num_rows > 0) {	
 									// output data of each row
 									while($row = $result->fetch_assoc()) {
 										echo "<tr>";
-											echo "<td></td>";
+											echo "<td>".$row['id']."</td>";
 											echo "<td>".$row['admno']."</td>";
 											$GLOBAL['names'] = $row['fname'];
 											echo "<td>". $row['fname']." ".$row['sirname']." ".$row['tname']."".$row['othername']."</td>";

@@ -6,55 +6,23 @@
 		<link rel="stylesheet" type="text/css" href="../css/index.css">
 		<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-		<script>
-			function showHint(str) {
-				if (str.length == 0) {
-					 document.getElementById("bookname").innerHTML = "";
-					return;
-				} else {
-					var xmlhttp = new XMLHttpRequest();
-					xmlhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-						 document.getElementById("txtHint").innerHTML = this.responseText;
-						 document.getElementById("price").value=document.getElementById("txtHint").innerHTML = this.responseText;
-					}
-				};
-				xmlhttp.open("GET", "../logic/searchdb.php?bookname=" + str, true);
-				xmlhttp.send();
-				}
-			}
-			
-			function search(str) {
-				if (str.length == 0) {
-					 document.getElementById("student").innerHTML = "";
-					return;
-				} else {
-					var xmlhttp = new XMLHttpRequest();
-					xmlhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-						 document.getElementById("stude").innerHTML = this.responseText;
-						 document.getElementById("names").value=document.getElementById("stude").innerHTML = this.responseText;
-					}
-				};
-				xmlhttp.open("GET", "../logic/searchdb.php?admno=" + str, true);
-				xmlhttp.send();
-				}
-			}
-			
+		<!--script>
 			function check(){
-				var c = document.getElementById('price').value;
-				var d = document.getElementById('copies').value;
-				console.log(d,c);
-				if(d >= c){
-					alert("can't issue greater than number in stock");
-					document.myform.copies.focus();
+				var copies = document.getElementById('copiesissued').value;
+				var copiesreturned = document.getElementById('copiesreturned').value;
+				
+				if(copiesreturned < copiesissued){
+					alert('student will be returning less than the issued book copies');
 					return false;
-				}else{
-						return true;
+				}
+				if(copiesreturned > copiesissued){
+					alert('student is returning more than the issued book copies');
+					return false;
 				}
 				
+				return true;
 			}
-		</script>
+		</script-->
 	</head>
 	<body>
 		<section class="container">
@@ -197,7 +165,12 @@
 										echo "<td style=' border-bottom: 1px solid white;'>".$row['category']."</td>";
 										echo "<td style=' border-bottom: 1px solid white;'>After 2 Weeks</td>";
 										?>
-										<td><button style="background:dodgerblue;color:white;">Return</button></td>
+										<td>
+											<button style="background:dodgerblue;color:white;">
+												<a href="issuebook.php?return=<?php echo $row['id'] ?>">Return</a>
+											</button>
+										</td>	
+									
 										<?php
 										
 									echo "</tr>";
@@ -208,6 +181,107 @@
 						//}
 					?>
 				</section>
+									<?php
+						if(isset($_GET['return'])){
+							$id = $_GET['return'];
+							
+							$sql = "select * from issued where id=$id";
+							$res = $conn->query($sql);
+							$row = $res->fetch_assoc();
+							?>
+							<section class="edit">
+								<section class="editinfo">
+									<form method="POST" action="" onsubmit="check()">
+											<h2>Return Book</h2>
+											<table>
+												<tr style="height:50px;width:100%;">	
+													<td class="label">
+														Admission No:
+														<input type="hidden" name="admno" value="<?php echo $row['admno']; ?>">
+														<span style="color:blue"><?php echo $row['admno']; ?></span>
+													</td>
+													<td class="label">
+														Student Name:
+														<input type="hidden" name="names" value="<?php echo $row['names']; ?>">
+														<span style="color:blue"><?php echo $row['names']; ?></span>
+													</td>
+												</tr><br>
+												<tr style="height:50px;">	
+													<td class="label">
+														Book Name:
+														<input type="hidden" name="bookname" value="<?php echo $row['bookname']; ?>">
+														<span style="color:blue"><?php echo $row['bookname']; ?></span>
+													</td>
+													<td class="label">
+														Book Code:
+														<input type="hidden" name="bookcode" value="<?php echo $row['bookcode']; ?>">
+														<span style="color:blue"><?php echo $row['bookcode']; ?></span>
+													</td>
+													<td class="label">
+														category:
+														<input type="hidden" name="category" value="<?php echo $row['category']; ?>">
+														<span style="color:blue"><?php echo $row['category']; ?></span>
+													</td>
+												</tr>
+												<tr style="height:50px;">
+													<td class="label">
+														Copies Issued:
+														<input type="hidden" name="copies" id="copiesissued" value="<?php echo $row['copies']; ?>">
+														<span style="color:blue"><?php echo $row['copies']; ?></span>
+													</td>
+													<td class="label">
+														Copies Returned:
+														<input type="number" name="copiesreturned" min="0"id="copiesreturned" style="width:40px;">
+													</td>
+													<td class="label">Due Date:<span style="color:blue"><?php echo $row['created_on']; ?></span></td>
+													<!--td class="label">Date Returned:<input type="date"  name="datereturned" required></td-->
+													<!--td class="label">Fine Imposed:<input type="number" style="width:40px;" name="fine" required></td-->
+												</tr>
+											</table><br><br
+											<center>
+												<button  class="save"  type="submit" name="save" value="<?php echo $row['id']; ?>">Return</button>
+												<button class="close"><a href="issuebook.php" >Cancel</a></button>								
+											</center>
+									</form>
+									<?php
+									if(isset($_POST['save'])){
+							$id = $_POST['save'];
+							$admno = $_POST['admno'];
+							$names = $_POST['names'];
+							$bookname = $_POST['bookname'];
+							$bookcode = $_POST['bookcode'];
+							$category = $_POST['category'];
+							$copies = $_POST['copies'];
+							$copiesreturned = $_POST['copiesreturned'];
+							
+							//echo $copies."".$copiesreturned."<br>";
+							
+							if($copiesreturned > $copies){
+								echo "student returning more than issued books";
+							}
+							if($copiesreturned < $copies){
+								echo "student is returning less books";
+							}
+							if($copiesreturned === $copies){
+								$sql = "insert into returned(admno,names,bookname,bookcode,copies,copies_returned,category)
+															VALUES
+										('$admno','$names','$bookname','$bookcode','$copies','$copiesreturned','$category')";
+										//echo $sql;
+								if($conn->query($sql) === TRUE){
+									$sql1 = "delete from issued where id=$id";
+									if($conn->query($sql1) === TRUE){
+										//echo $sql1;
+										//header("Location:addpayment.php");
+									}
+								}
+							}
+						} ?>
+								</section>		
+							</section>
+							<?php
+						}
+						
+					?>
 			</section>
 		</section>
 	</body>

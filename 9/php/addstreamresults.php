@@ -33,6 +33,7 @@
 			<section class="display">
 				<?php include 'menu.php'?>
 				<section class="disp">
+				
 					<h2>Select Exam </h2>
 					<div class="tab">
 						
@@ -91,10 +92,10 @@
 							</select>
 						</td>
 						<td class="label">Exam Name</td>
-						<!--td class="inputs">
+						<td class="inputs">
 							<select name="stream" required>
 								<option value="">--Select Stream--</option>
-									<!--?php
+									<?php
 										require_once('../logic/connector.php');
 										$sql = "select * from stream";
 										$result=$conn->query($sql);
@@ -105,7 +106,7 @@
 										}	
 									?>
 							</select>
-						</td-->
+						</td>
 						<td><input type="submit" name="query" value="Query" style="background:green;height:2rem;box-shadow:2px 5px 5px #23263C;color:white;font-size:1rem;"></td>	
 					</form>
 					<?php
@@ -113,12 +114,12 @@
 						if(isset($_POST['query'])){
 							//$class = $_POST['class'];
 							$examname = $_POST['examname'];
-							//$streams = $_POST['stream'];
+							$streams = $_POST['stream'];
 							$clas = $_POST['clsname'];
 							$class = "'".$clas."'";
-							//$stream = "'".$streams."'";
+							$stream = "'".$streams."'";
 							//echo $stream;
-							$sql = "select * from student where class=$class ;" ;
+							$sql = "select * from student where stream=$stream and class=$class ;" ;
 						//	echo $sql;
 							$res=$conn->query($sql);
 							if($res->num_rows>0){
@@ -129,6 +130,7 @@
 										<tr style="background:green;color:white;box-shadow:2px 4px 5px green;text-align:center;" >
 											<td>Student Names</td>
 											<td>Class</td>
+											<td>Stream</td>
 											<td>Admn</td>
 											<td>exam</td>
 											<td>Math</td>
@@ -163,7 +165,7 @@
 										?>
 										<td class="labels" style=' border-bottom: 1px solid white;'><input type="hidden" name="<?php echo "names[]"; ?>" value="<?php echo $name; ?>"><?php echo $name; ?></td>
 										<td class="labels" style=' border-bottom: 1px solid white;'><input type="hidden" name="<?php echo "class[]"; ?>" value="<?php echo $class; ?>"><?php echo $class; ?></td>
-										<!--td class="labels" style=' border-bottom: 1px solid white;'><input type="hidden" name="<!--?php echo "stream[]"; ?>" value="<!--?php echo $stream; ?>"><!--?php echo $stream; ?></td-->
+										<td class="labels" style=' border-bottom: 1px solid white;'><input type="hidden" name="<?php echo "stream[]"; ?>" value="<?php echo $stream; ?>"><?php echo $stream; ?></td>
 										<td class="labels" style=' border-bottom: 1px solid white;'><input type="hidden" name="<?php echo "admno[]"; ?>" value="<?php echo $admno; ?>"><?php echo $admno; ?></td>
 										<td class="labels" style=' border-bottom: 1px solid white;'><input type="hidden" name="<?php echo "examname[]"; ?>" value="<?php echo $examname; ?>"><?php echo $examname; ?></td>
 										<td class="inputs" style=' border-bottom: 1px solid white;'><input style="width:40px;"  type="number" name="<?php echo "math[]"; ?>" ></td>

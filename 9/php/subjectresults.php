@@ -112,45 +112,18 @@
 								<h2>Exam Results</h2>
 								<table style="width:100%;">
 									<tr style="background:green;color:white;box-shadow:2px 4px 5px green;text-align:center;height:3rem;" >
-										<!--td>#</td-->
 										<td>admno</td>
 										<td>Student Name</td>
-										<!--td>Class/Grade</td-->
 										<td>Math</td>
 										<td>Eng</td>
-										<td>Kisw</td>
-										<td>Chem</td>
-										<td>Phy</td>
-										<td>Bio</td>
-										<td>Histo</td>
-										<td>C.R.E</td>
-										<td>Comp</td>
-										<td>Music</td>
-										<td>Bizna</td>
-										<td>Agric</td>
-										<td>French</td>
-										<td>Total Marks</td>
 									</tr>
 									<?php
 										while($row=$res->fetch_assoc()){
 											echo "<tr style='height:2.5rem;'>";
-												//echo "<td>".$row['id']."</td>";
 												echo "<td>".$row['admno']."</td>";
 												echo "<td>".$row['names']."</td>";
 												echo "<td>".$row['math']."</td>";
 												echo "<td>".$row['eng']."</td>";
-												echo "<td>".$row['kisw']."</td>";
-												echo "<td>".$row['chem']."</td>";
-												echo "<td>".$row['phy']."</td>";
-												echo "<td>".$row['bio']."</td>";
-												echo "<td>".$row['bio']."</td>";
-												echo "<td>".$row['bio']."</td>";
-												echo "<td>".$row['bio']."</td>";
-												echo "<td>".$row['bio']."</td>";
-												echo "<td>".$row['bio']."</td>";
-												echo "<td>".$row['bio']."</td>";
-												echo "<td>".$row['bio']."</td>";
-												echo "<td>".$row['marks']."</td>";
 											echo "</tr>";
 										}
 									?>

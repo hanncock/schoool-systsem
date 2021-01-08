@@ -25,6 +25,11 @@
 				<section class="disp">
 					<h2>Query Results</h2>
 					<div class="tab">
+						<a href="subjectresults.php">
+							<button class="tablinks">
+								<label class="labels" id="labels">Subject Results</label>
+							</button>
+						</a>
 						<a href="processresult.php">
 							<button class="tablinks">
 								<label class="labels" id="labels">Form/Class Results</label>

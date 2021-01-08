@@ -154,7 +154,10 @@
         return $result;
 }*/
 function whatsapp($body){
-	$url = 'https://api.chat-api.com/instance167744/sendMessage?token=6hy5qz8ztlykat74';
+	//$url = 'https://api.chat-api.com/instance167744/sendMessage?token=6hy5qz8ztlykat74';
+	$url ='https://eu99.chat-api.com/instance209455/sendMessage?token=0x520tskhlue582n';
+
+	//echo 'and token 0x520tskhlue582n';
 	$chatid = '254700202696@c.us';
 	//http_build_query($url);
 	$result = file_get_contents($url);
@@ -162,11 +165,13 @@ function whatsapp($body){
 }
 whatsapp ('welcome');
 
-$chatid='254700202696@c.us';
+//$chatid='254700202696@c.us';
+
 $body = 'welcome';
 
 $url = 'https://api.chat-api.com';
-$bot = '/instance167744/messages?token=6hy5qz8ztlykat74';
+//$bot = '/instance167744/messages?token=6hy5qz8ztlykat74';
+$bot = '/instance209455/message?token=0x520tskhlue582n'
 $path = $url . $bot;
 $soke = file_get_contents($path);
 //echo $soke;

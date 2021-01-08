@@ -2,7 +2,7 @@
 	require('connector.php');
 	($_POST);
 		
-	$admno = count($_POST['admno']);
+       	$admno = count($_POST['admno']);
 //	echo $admno;
 	$sql = "insert into `results`(`examname`,`class`,`stream`,`names`,`admno`,`math`,`eng`,`kisw`,`chem`,`phy`,`bio`,`year`)values";
 	for($i=0; $i<$admno; $i++){

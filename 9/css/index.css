@@ -2,6 +2,13 @@
 	box-sizing: border-box;
 	margin:0;
 	font-family: 'Poppins';
+	
+}
+*::-webkit-scrollbar {
+    display: none;
+}
+*::a{
+	text-decoration:none;
 }
 .container{
 	display:grid;
@@ -52,16 +59,26 @@
 	
 }
 .menu{
+	top:50;
 	width:18%;
 	background:#23263C;
 	color:white;
 	font-size:1rem;
+	overflow-y:scroll;
+	height:650px;
+}
+.menu::-webkit-scrollbar {
+    display: none;
 }
 .userrole{
 	text-align:center;
 	font-family:cursive;
+	position:absolute;
+	background:#23263C;
+	width:16.5%;
+	color:white;
 }
-.menubtn{
+.dropdown-btn{
 	border:none;
 	width:100%;
 	height:auto;
@@ -69,15 +86,14 @@
 	min-height:2rem;
 	text-align:left;
 	padding-left:1rem;
+	background:lightgrey;
+	color:#23263C;
 }
-.menubtn:hover{
+/*.menubtn:hover{
 	background:dodgerblue;
 }
 a{
 	text-decoration:none;
-}
-.submenu {
-	display:none;
 }
 
 .menubtn:hover .submenu{
@@ -85,11 +101,14 @@ a{
 	height:auto;
 	min-height:2rem;
 	text-align:right;
-}
+}*/
 .disp{
 	margin-left:4px;
 	width:90%;
 	background:lightgrey;
+	height:650px;
+	overflow-y:scroll;
+	
 }
 .boxes{
 	width:99%;
@@ -211,6 +230,14 @@ meso{
 	text-align:center;
 }
 .payment{
-	    display: grid;
+	display: grid;
     grid-template-columns: 40% 60%;
+}
+.charged{
+	overflow-y: auto;
+	height:700px;"
+	background:yellow;
+}
+.charged::-webkit-scrollbar {
+    display: none;
 }
