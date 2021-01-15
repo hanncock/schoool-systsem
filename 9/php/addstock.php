@@ -68,71 +68,49 @@
 													VALUES
 										('$itemname','$itemcode','$description','$copies','$expiry','$user')";
 								echo $sql;
-								/*if($conn->query($sql) === TRUE){
-									?>
-									<section class="popup" name="popup" id="popup">
-										<section class="meso">
-											<center>
-												<img src='../images/sucsess.jpg' style="width:100px;height:100px;"><br><br>
-												Book Created Succesfully<br><br><br>
-												<a href="registerbook.php">
-													<button onload="close()" style="background:dodgerblue;border-radius:10px;width:90px;text-align:center;height:40px;border:none;color:white;">OK</button>
-												</a>
-											</center>
-										</section>
-									</section>
-									<?php
-								}else{*/
-									?>
-									<!--section class="popup" name="popup" id="popup">
-										<section class="meso">
-											<center>
-												<img src='../images/error.png' style="width:100px;height:100px;"><br><br>
-												Book Not Created<br><br><br>
-												<a href="registerbook.php">
-													<button onload="close()" style="background:dodgerblue;border-radius:10px;width:90px;text-align:center;height:40px;border:none;color:white;">OK</button>
-												</a>
-											</center>
-										</section>
-									</section-->
-									<?php
+								if($conn->query($sql) === TRUE){
+									echo "succesful";
+								}else{
+									echo "item not created";
 								}
-							//}
+							}
 						?>
 					</section>
 					<?php 
 						require('../logic/connector.php');
-						$sql = "Select * from library ";
+						$sql = "Select * from stock ";
 						$res = $conn->query($sql);
 						if($res->num_rows > 0){
 							?>
 							<table style="width:100%;">
-								<h2>Books List</h2>
+								<h2>Stock List</h2>
 								<tr style="background:green;color:white;box-shadow:2px 4px 5px green;text-align:center;height:2.5rem;">
 									<td>#</td>
-									<td>Cover</td>
-									<td>Book Name</td>
-									<td>Book Code</td>
+									
+									<td>Item Name</td>
+									<td>Item Code</td>
+									<td>Description</td>
 									<td>Copies</td>
-									<td>Category</td>
+									<td>expiry</td>
 									<td></td>
 								</tr>
 								<?php
 								while($row = $res->fetch_assoc()){
 									echo "<tr style='height:2.5rem;text-align:center'>";
 										echo "<td style=' border-bottom: 1px solid white;'>".$row['id']."</td>";
-										echo "<td><img src='../images/avatar.png' style='width:40px;height:40px;'></td>";
-										echo "<td style=' border-bottom: 1px solid white;'>".$row['bookname']."</td>";
-										echo "<td style=' border-bottom: 1px solid white;'>".$row['bookcode']."</td>";
+										//echo "<td><img src='../images/avatar.png' style='width:40px;height:40px;'></td>";
+										echo "<td style=' border-bottom: 1px solid white;'>".$row['itemname']."</td>";
+										echo "<td style=' border-bottom: 1px solid white;'>".$row['itemcode']."</td>";
+										echo "<td style=' border-bottom: 1px solid white;'>".$row['description']."</td>";
 										echo "<td style=' border-bottom: 1px solid white;'>".$row['copies']."</td>";
-										echo "<td style=' border-bottom: 1px solid white;'>".$row['category']."</td>";
+										echo "<td style=' border-bottom: 1px solid white;'>".$row['expiry']."</td>";
 										
 										?>
 										<td>
-											<button style="background:green;"><a href="registerbook.php?edit=<?php echo $row['id'] ?>" >
+											<button style="background:green;"><a href="addstock.php?edit=<?php echo $row['id'] ?>" >
 												<i class="fa fa-edit"  class="action"></i></a>
 											</button>
-											<button style="background:red;"><a href="registerbook.php?delete=<?php echo $row['id'] ?>">
+											<button style="background:red;"><a href="addstock.php?delete=<?php echo $row['id'] ?>">
 												<i class="fa fa-trash"  class="action"></i>
 											</a></button>
 										</td>
@@ -145,6 +123,77 @@
 					?>
 				</section>
 			</section>
+			<?php 
+				if(isset($_GET['edit'])){
+					$id = $_GET['edit'];
+					$sql ="SELECT * from stock where id=$id";
+					echo $sql;
+					$res = $conn->query($sql);
+					if($res->num_rows>0){
+						$row = $res->fetch_assoc();
+						$itemname = $row['itemname'];
+						$itemcode = $row['itemcode'];
+						$description = $row['description'];
+						$copies = $row['copies'];
+						$created = $row['created_on'];
+						$expiry = $row['expiry'];
+					}
+					?>
+					 <section class="edit">
+			<section class="editinfo">
+				<form method="POST" action=""class="addschl">
+						<h2>Edit Stock</h2>
+						<table>
+							
+							<tr style="height:100px;">
+								<td class="label">Item Name</td>
+								<td class="inputs"><input type="text" name="itemname" value="<?php echo $itemname; ?>"></td>
+								<td class="label">Item Code.</td>
+								<td class="inputs"><input type="text" name="itemcode" value="<?php echo $itemcode; ?>"></td>
+								<td class="label">Item Description</td>
+								<td class="inputs"><input type="text" name="description" value="<?php echo $description; ?>"></td>	
+								
+							</tr>
+							<tr style="height:100px;">	
+								<td class="label">Copies</td>
+								<td class="inputs"><input type="text" name="copies" value="<?php echo $copies; ?>"></td>
+								<td class="label">Created on</td>
+								<td class="label"><input type="hidden" name="created" value="<?php echo $created; ?>"><?php echo $created;?></td>
+								<td class="label">Expiry</td>
+								<td class="label"><input type="date" name="expiry" value="<?php echo $expiry; ?>"></td>
+					
+							</tr>
+							
+						</table><br><br><br>
+						<center>
+							<button  class="save" type="submit" name="save" value="<?php echo $row['id']; ?>">Save</button>
+							<button class="close"><a href="addstock.php" >Cancel</a></button>								
+						</center>
+				</form>
+			</section>		
+		</section>
+					<?php
+				}
+				if(isset($_POST['save'])){
+					$id = $_POST['save'];
+					$itemname = $_POST['itemname'];
+					$description = $_POST['description'];
+					$itemcode = $_POST['itemcode'];
+					$copies = $_POST['copies'];
+					$expiry =  $_POST['expiry'];
+					$sql = "update stock set itemname='$itemname',description='$description',itemcode='$itemcode',copies='$copies',expiry='$expiry' where id=$id";
+					if($conn->query($sql)===TRUE){
+						header('Location:addstock.php');
+					}
+				}
+				if(isset($_GET['delete'])){
+					$id = $_GET['delete'];
+					$sql ="delete from stock where id=$id";
+					if($conn->query($sql)){
+						echo "deleted";
+					}
+				}
+			?>
 		</section>
 	</body>
 </html>
