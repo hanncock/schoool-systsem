@@ -21,6 +21,7 @@ create table student(
 	user varchar(10)not null
 );
 
+
 create table school(
 	id int(6)primary key not null auto_increment,
 	schlname varchar(50)not null,

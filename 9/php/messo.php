@@ -25,9 +25,11 @@
 					tabcontent[i].style.display = "none";
 				}
 			}
+			
+			
 		</script>
 	</head>
-	<body>
+	<body onload="disp()">
 	<section class="container">
 			<section class="header">
 				<img src="../images/logo.png" class="logo">
@@ -107,14 +109,16 @@
 												if($row['receiver'] == $user){
 													?>
 													<button style="float:left;background:grey;border-radius:10px;width:auto-fit;height:auto;">
-														<span><?php echo $row['message'];?></span>
+														<span><?php echo $row['message'];?><br>
+														<sub id="time" name="time" value="<?php echo $row['created_on']?>" style="float:left"><?php echo $row['created_on']?></sub></span>
 													</button><br><br>
 													<?php
 												}
 												if($row['sender']==$user){
 													?>
 													<button style="float:right;background:lightgrey;border-radius:10px;width:auto-fit;height:auto;">
-														<span><?php echo $row['message'];?></span>
+														<span><?php echo $row['message'];?><br>
+														<sub id="time" name="time" value="<?php echo $row['created_on']?>"><?php echo $row['created_on']?></sub></span>
 													</button><br><br>
 													<?php
 												}
@@ -154,4 +158,12 @@
 			</section>
 		</section>
 	</body>
+	<script>
+		function disp(){
+				var x = document.getElementById("time").value;
+				console.log(x);
+				console.log('123');
+			}
+		</script>
+	</head>
 </html>

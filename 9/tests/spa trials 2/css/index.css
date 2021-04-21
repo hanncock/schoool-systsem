@@ -1,0 +1,55 @@
+*{
+	box-sizing: border-box;
+	margin:0;
+	font-family: 'Poppins';
+	font-size:1rem;
+}
+body{
+	background:dodgerblue;
+	padding: 0px 0px 0px;
+}
+*::a{
+	text-decoration:none;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+.header{
+	background:white;
+	display:block;
+	height:3rem;
+}
+.menu{
+	width:15%;
+	font-size:1rem;
+	background:blue;
+	float:left;
+	height:650px;
+}
+/*.menu:hover{
+	width:15%;
+}*/
+.btn{
+	width:100%;
+	border:none;
+	text-align:left;
+	height:2.5rem;	
+}
+
+.drpcnt{
+	
+}
+.drpbtn{
+	width:80%;
+	border:none;
+	text-align:center;
+	height:2rem;
+	margin-left:20%;
+}
+.iframe{
+	width:85%;
+	background:lightgrey;
+	float:right;
+	border:none;
+	height:650px;
+}
