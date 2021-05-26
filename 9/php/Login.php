@@ -10,7 +10,7 @@
 	</head>
 	<body>
 	
-	<section class="container" style="background:red;">
+		<section class="container" style="background:red;">
 			<section class="display">
 				<section class="disp">
 					<section class="schls">
@@ -58,6 +58,7 @@
 						
 						}
 					}
+
 				}
 			?>
 		</section>

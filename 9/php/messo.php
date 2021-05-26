@@ -138,7 +138,6 @@
 											}else{
 												echo "not sent";
 											}
-										
 										}
 										
 									?>

@@ -31,7 +31,7 @@
 		?>
 		Role:<span style="color:grey;">Admin</span>
 	</div><br><br>
-	
+	<a href="logout.php">Logout</a>
 	<a href="index.php"><button  class="menubtn"><i class="fa fa-tachometer" style="font-size:2.5rem;"></i>Dasboard</button></a>
 	
 	<div class="dropdown">

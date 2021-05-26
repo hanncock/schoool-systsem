@@ -5,6 +5,9 @@ $dbpassword = "";
 $dbname = "schlsys";
 
 $conn =new mysqli($host,$dbusername,$dbpassword,$dbname);
+
+
+
  /*
 echo $_SERVER['PHP_SELF'];
 echo "<br>";

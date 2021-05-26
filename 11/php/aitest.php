@@ -34,7 +34,6 @@
 		 body{
 			 background: #F1F1F1;
 		 }
-		
 		 .disp{
 			 margin-top:2rem;
 			display: flex;
@@ -98,17 +97,18 @@
 				my menu
 			</div>
 			<section class="dis">
-			<form method="POST" >
-				<!--center><h1>Translate to </h2></center-->
-				<input type="text" class="textarea" name="words" id="word" onkeyup="showHint(this.value)"><br>
-				<!--input type="submit" name="translate" class="btn" value="translate"-->
-			</form>
-		
-			<div class="outline">
-				<p><span id="txtHint"></span></p>
-				<input type="hidden" name="price" id="price">
-			</div>
-		</section>
+				<div>
+				<form method="POST" >
+					<!--center><h1>Translate to </h2></center-->
+					<input type="text" class="textarea" name="words" id="word" onkeyup="showHint(this.value)"><br>
+					<!--input type="submit" name="translate" class="btn" value="translate"-->
+				</form>
+				</div>
+				<div class="outline">
+					<p><span id="txtHint"></span></p>
+					<input type="hidden" name="price" id="price">
+				</div>
+			</section>
 		</div>
 		<?php
 		$host = "127.0.0.1";
